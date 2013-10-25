@@ -1,25 +1,25 @@
 import Array._
 
-object Output {
-	def Show(canvas: Array[Array[Option[Char]]]) {
+class Canvas {
 
-		val yLength: Int = canvas(0).length
-		val xLength: Int = canvas.length
+}
 
+object Canvas {
+	def apply(width: Int, length: Int): Array[Array[Char]] = {
 
-		for (x <- 0 until xLength) {
-			for (y <- 0 until yLength) {
+		var canvas = ofDim[Char](width,length)
 
-				val o: Option[Char] = canvas(x)(y)
-
+		for (x <- 0 until width) {
+			for (y <- 0 until length){
 				(x,y) match {
-					case(x,_) if (x == 0) || (x == xLength-1) => print('-')
-					case(_,y) if (y == 0) || (y == yLength-1) => print('|')
-					case (_,_) => print(o)
+					case(x,_) if (x == 0) || (x == width-1) => canvas(x)(y) = '-'
+					case(_,y) if (y == 0) || (y == length-1) => canvas(x)(y)  = '|'
+					case (_,_) => canvas(x)(y) = ' '
 				}
 			}
-			println()
 		}
+
+		return canvas
 	}
 }
 
@@ -27,15 +27,15 @@ object Drawing {
 
 	def main(args: Array[String]) {
 
-		val x, y = 6
-		var canvas = ofDim[Option[Char]](x,y)
+		var canvas = Canvas(6,6)
 
-		Output.Show(canvas)
+		for(x <- 0 until canvas.length) {
+			for(y <- 0 until canvas(0).length) {
+				print(canvas(x)(y))
+			}
+			println
+		}
 	}
-}
-
-class Canvas {
-
 }
 
 trait Command {
