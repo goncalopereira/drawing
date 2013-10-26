@@ -1,4 +1,5 @@
 import Drawing._
+import Fill.BucketFill
 import IO.ConsoleOutput
 import Shapes._
 
@@ -18,6 +19,10 @@ object App {
 
 		RectangleFactory(16,1,20,3).foreach {
 			case (x,y) => c(x,y) = Some('x')
+		}
+
+		BucketFill(10,3,'o',c).foreach {
+			case (x,y) => c(x,y) = Some('o')
 		}
 
 		ConsoleOutput.Print(c)
