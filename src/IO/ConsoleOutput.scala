@@ -1,6 +1,8 @@
-package Drawing
+package IO
 
-object Output {
+import Drawing.Canvas
+
+object ConsoleOutput {
 
 	def Print(canvas: Canvas) {
 		canvas.foreach(row => {

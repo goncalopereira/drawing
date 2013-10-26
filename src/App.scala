@@ -1,4 +1,6 @@
 import Drawing._
+import IO.ConsoleOutput
+import Shapes._
 
 object App {
 
@@ -18,7 +20,7 @@ object App {
 			case (x,y) => c(x,y) = Some('x')
 		}
 
-		Output.Print(c)
+		ConsoleOutput.Print(c)
 	}
 }
 

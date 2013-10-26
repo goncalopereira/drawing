@@ -1,4 +1,4 @@
-package Drawing
+package Shapes
 
 /*
 Abstracting line algorithm from Canvas and Draw
@@ -25,18 +25,3 @@ object LineFactory {
 	}
 }
 
-object RectangleFactory {
-	def apply(x: Int, y: Int, x2: Int, y2: Int): Seq[(Int,Int)] = {
-
-		/*Each side is a line*/
-		val side1 = LineFactory(x,y,x2,y)
-		val side2 = LineFactory(x,y,x,y2)
-		val side3 = LineFactory(x,y2,x2,y2)
-		val side4 = LineFactory(x2,y,x2,y2)
-
-		val sides = side1 ++ side2 ++ side3 ++ side4
-
-		/*sides overlap on corners*/
-		sides.distinct
-	}
-}
