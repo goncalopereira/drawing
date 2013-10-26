@@ -14,6 +14,10 @@ object App {
 			case (x,y) => c(x,y) = Some('x')
 		}
 
+		RectangleFactory(16,1,20,3).foreach {
+			case (x,y) => c(x,y) = Some('x')
+		}
+
 		Output.Print(c)
 	}
 }

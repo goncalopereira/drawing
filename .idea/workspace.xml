@@ -7,13 +7,13 @@
     </list>
     <ignored path="Drawing.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Drawing.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382802621093" ignored="false" />
+    <file path="/Drawing.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382803513110" ignored="false" />
     <file path="/Dummy.txt" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382776373047" ignored="false" />
     <file path="/fragment.java" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382797859831" ignored="false" />
     <file path="/Output.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382798156455" ignored="false" />
     <file path="/Canvas.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382801723915" ignored="false" />
     <file path="/App.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382799906577" ignored="false" />
-    <file path="/Lines.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382802600653" ignored="false" />
+    <file path="/Lines.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382803470796" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,19 +79,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="App.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="App.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="14" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+            <state line="17" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.71428573">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lines.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Lines.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lines.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="2" selection-start="482" selection-end="482" vertical-scroll-proportion="0.96638656">
+            <state line="38" column="32" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/src/Command.scala" />
         <option value="$PROJECT_DIR$/src/Drawing.scala" />
         <option value="$PROJECT_DIR$/src/Canvas.scala" />
-        <option value="$PROJECT_DIR$/src/App.scala" />
         <option value="$PROJECT_DIR$/src/Lines.scala" />
+        <option value="$PROJECT_DIR$/src/App.scala" />
       </list>
     </option>
   </component>
@@ -524,16 +524,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.scala">
+    <entry file="file://$PROJECT_DIR$/src/Lines.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+        <state line="38" column="32" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lines.scala">
+    <entry file="file://$PROJECT_DIR$/src/App.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="2" selection-start="482" selection-end="482" vertical-scroll-proportion="0.96638656">
+        <state line="17" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.71428573">
           <folding />
         </state>
       </provider>
