@@ -1,26 +1,31 @@
 package Drawing
 
+/*
+	Protecting direct access to Matrix (Open/Close)
+  Option instead of ' ' Char for non-existing to separate IO implementation from value
+  using concept of width and height as as matrix is represented by y,x
+ */
 class Canvas(private val width: Int, private val height: Int) extends Seq[Array[Option[Char]]] {
 
 	private val widthWithBorder = width+2
 	private val heightWithBorder = height+2
 
-	private var values = Array.tabulate[Option[Char]](widthWithBorder,heightWithBorder)
+	private var values = Array.tabulate[Option[Char]](heightWithBorder,widthWithBorder)
 	{
-		(x,y) => (x,y) match {
-			case(x,_) if (x == 0) || (x == widthWithBorder-1) => Some('-')
-			case(_,y) if (y == 0) || (y == heightWithBorder-1) =>  Some('|')
+		(h,w) => (h,w) match {
+			case(h,_) if (h == 0) || (h == heightWithBorder-1) => Some('-')
+			case(_,w) if (w == 0) || (w == widthWithBorder-1) =>  Some('|')
 			case (_,_) =>  None
 		}
 	}
 
 	def length: Int = width
 
-	def apply(x: Int, y: Int): Option[Char] = return values(x)(y)
+	def apply(width: Int, height: Int): Option[Char] = return values(height)(width)
 
-	def apply(x: Int): Array[Option[Char]] = return values(x)
+	def apply(row: Int): Array[Option[Char]] = return values(row)
 
-	def update(x: Int, y: Int, value: Option[Char]) = values(x)(y) = value
+	def update(width: Int, height: Int, value: Option[Char]) = values(height)(width) = value
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
 }

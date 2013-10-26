@@ -6,14 +6,13 @@ object App {
 
 		val c = new Canvas(20, 4)
 
-		Lines(0,0,0,5).foreach {
-			case (x,y) => c(x,y) = Some('a')
+		Lines(1,2,6,2).foreach {
+			case (x,y) => c(x,y) = Some('x')
 		}
 
-
-		println(Lines(0,0,0,5))
-
-		println(Lines(1,0,3,0))
+		Lines(6,3,6,4).foreach {
+			case (x,y) => c(x,y) = Some('x')
+		}
 
 		Output.Print(c)
 	}
