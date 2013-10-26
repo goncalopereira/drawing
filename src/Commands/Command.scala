@@ -1,24 +1,26 @@
 package Commands
 
-/**
- * Created with IntelliJ IDEA.
- * User: goncalopereira
- * Date: 26/10/2013
- * Time: 17:12
- * To change this template use File | Settings | File Templates.
- */
-trait Command {
 
+trait Command {
+	def Execute()
 }
 
 class CreateCanvas extends Command {
-
+ def Execute() {}
 }
 
 class Quit extends Command {
-
+	def Execute() {}
 }
 
 class Rectangle extends Command {
-
+	def Execute() {}
  }
+
+class Line extends Command {
+	def Execute() {}
+}
+
+class Bucket extends Command {
+	def Execute() {}
+}

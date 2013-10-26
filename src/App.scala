@@ -9,21 +9,13 @@ object App {
 
 		val c = new Canvas(20, 4)
 
-		LineFactory(1,2,6,2).foreach {
-			case (x,y) => c(x,y) = Some('x')
-		}
+		c(LineFactory(1,2,6,2)) = Some(Canvas.Line)
 
-		LineFactory(6,3,6,4).foreach {
-			case (x,y) => c(x,y) = Some('x')
-		}
+		c(LineFactory(6,3,6,4)) = Some(Canvas.Line)
 
-		RectangleFactory(16,1,20,3).foreach {
-			case (x,y) => c(x,y) = Some('x')
-		}
+		c(RectangleFactory(16,1,20,3)) = Some(Canvas.Line)
 
-		BucketFill(10,3,'o',c).foreach {
-			case (x,y) => c(x,y) = Some('o')
-		}
+		c(BucketFill(10,3,'o',c)) = Some('o')
 
 		ConsoleOutput.Print(c)
 	}

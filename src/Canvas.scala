@@ -33,6 +33,10 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 
 	def update(width: Int, height: Int, value: Option[Char]) = values(height)(width) = value
 
+	def update(points: Seq[(Int,Int)], value: Option[Char]) = points.foreach {
+		case (width,height) => values(height)(width) = value
+	}
+
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
 }
 
