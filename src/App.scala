@@ -6,11 +6,11 @@ object App {
 
 		val c = new Canvas(20, 4)
 
-		Lines(1,2,6,2).foreach {
+		LineFactory(1,2,6,2).foreach {
 			case (x,y) => c(x,y) = Some('x')
 		}
 
-		Lines(6,3,6,4).foreach {
+		LineFactory(6,3,6,4).foreach {
 			case (x,y) => c(x,y) = Some('x')
 		}
 
