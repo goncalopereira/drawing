@@ -1,8 +1,4 @@
 package Shapes
-
-import scala.collection.immutable.IndexedSeq
-import scala.collection.JavaConverters._
-
 /*
 Abstracting line algorithm from Canvas and Draw
 KISS because there are only two types of line, more variations could be replaced with Chain of Responsibility

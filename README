@@ -1,14 +1,12 @@
-OS:
-MacOS
-install Homebrew
-$brew install sbt
-$brew install scala
+tested with MacOS with Homebrew
+$brew install sbt  (0.13)
+$brew install scala (2.10.3)
 
-sbt 0.13
-scala 2.10.3
-
-From a vanilla Debian stable:
-
+tested with vanilla Debian stable with Vagrant:
+$apt-get install scala (2.9.10)
+$wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb
+$dpkg -i sbt.deb (0.13)
+If the image has very little memory SBT might fail.. use the -mem flag to reduce memory
 
 RUN APP:
 $ sbt run
@@ -16,12 +14,12 @@ $ sbt run
 RUN TESTS:
 $ sbt test
 
-PACKAGE:
-$ sbt package
+PACKAGE WITH ALL DEPENDENCIES:
+Bundled from https://github.com/sbt/sbt-assembly
+$ sbt assembly
 
-RUN PACKAGE WITH SCALA:
-$ cd target/scala-2.10/  (depends on scala version)
-$ scala drawing_2.10-0.1-SNAPSHOT.jar (depends on scala version)
-
-RUN PACKAGE WITH JVM:
-$ java -cp /usr
+RUN PACKAGE WITH SCALA/JVM:
+$ cd target/scala-2.10/
+$ scala Drawing-assembly-0.1-SNAPSHOT.jar
+or...
+$ java -jar Drawing-assembly-0.1-SNAPSHOT.jar
