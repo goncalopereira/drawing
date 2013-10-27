@@ -1,23 +1,21 @@
+import Commands._
 import Drawing._
 import Fill.BucketFill
-import IO.ConsoleOutput
 import Shapes._
 
 object App {
 
 	def main(args: Array[String]) {
 
-		val c = new Canvas(20, 4)
+		 var canvas = new CreateCanvas(20,4).Execute()
 
-		c(LineFactory(1,2,6,2)) = Some(Canvas.Line)
+		canvas = new Line(1,2,6,2,canvas.get).Execute()
 
-		c(LineFactory(6,3,6,4)) = Some(Canvas.Line)
+		canvas = new Line(6,3,6,4,canvas.get).Execute()
 
-		c(RectangleFactory(16,1,20,3)) = Some(Canvas.Line)
+		canvas = new Rectangle(16,1,20,3,canvas.get).Execute()
 
-		c(BucketFill(10,3,'o',c)) = Some('o')
-
-		ConsoleOutput.Print(c)
+		canvas = new Bucket(10,3,'o',canvas.get).Execute()
 	}
 }
 

@@ -4,7 +4,7 @@ import Drawing.Canvas
 
 object ConsoleOutput {
 
-	def Print(canvas: Canvas) {
+	def apply(canvas: Canvas) {
 		canvas.foreach(row => {
 			row.foreach(p => print(p.getOrElse(' ')))
 			println()
