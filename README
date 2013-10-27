@@ -1,0 +1,17 @@
+OS:
+MacOS
+install Homebrew
+$brew install sbt
+$brew install scala
+
+sbt 0.13
+scala 2.10.3
+
+From a vanilla Debian stable:
+
+
+RUN APP:
+$ sbt run
+
+RUN TESTS:
+$ sbt test
