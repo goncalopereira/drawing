@@ -1,5 +1,7 @@
 package Drawing
 
+import Convert.Output
+
 /*
 	Protecting direct access to Matrix (Open/Close)
   Option instead of ' ' Char for non-existing to separate Convert implementation from value
@@ -42,5 +44,16 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	}
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
+
+  override def toString(): String = {
+		var output: String = ""
+
+		this.foreach(row => {
+			output += row.foldLeft("") ((line,rowValue) => line+rowValue.getOrElse(Output.EmptyChar))
+			output += Output.NewLine
+		})
+
+		output
+	}
 }
 

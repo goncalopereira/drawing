@@ -1,5 +1,4 @@
 import Commands._
-import Convert.Output
 import Drawing.Canvas
 import Parse.InputParser
 
@@ -25,19 +24,19 @@ object App {
 				  command match {
 					  case Some(c:CreateCanvas) => {
 						  canvas = c.Execute()
-						  print(Output(canvas.get))
+						  print(canvas.get)
 					  }
 						case Some(c:DrawLine) => {
 							c.Execute()
-							print(Output(canvas.get))
+							print(canvas.get)
 						}
 						case Some(c:DrawRectangle) => {
 							c.Execute()
-							print(Output(canvas.get))
+							print(canvas.get)
 						}
 						case Some(c:FillCanvas) => {
 							c.Execute()
-							print(Output(canvas.get))
+							print(canvas.get)
 						}
 						case Some(c:Quit) => {
 							running = false
