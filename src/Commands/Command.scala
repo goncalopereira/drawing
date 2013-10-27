@@ -25,7 +25,7 @@ class Quit extends Command {
 class Rectangle(x: Int, y: Int, x2: Int, y2: Int, canvas: Canvas) extends Command {
 	def Execute() : Option[Canvas] =  {
 		val points = RectangleFactory(x,y,x2,y2)
-	  canvas(points) = Some(Canvas.Line)
+	  canvas(points) = Canvas.Line
 		ConsoleOutput(canvas)
 		Some(canvas)
 	}
@@ -34,7 +34,7 @@ class Rectangle(x: Int, y: Int, x2: Int, y2: Int, canvas: Canvas) extends Comman
 class Line(x: Int, y: Int, x2: Int, y2: Int, canvas: Canvas) extends Command {
 	def Execute() : Option[Canvas] = {
 		val points = LineFactory(x,y,x2,y2)
-		canvas(points) = Some(Canvas.Line)
+		canvas(points) = Canvas.Line
 		ConsoleOutput(canvas)
 		Some(canvas)
 	}
@@ -43,7 +43,7 @@ class Line(x: Int, y: Int, x2: Int, y2: Int, canvas: Canvas) extends Command {
 class Bucket(x: Int, y: Int, colour: Char, canvas: Canvas) extends Command {
 	def Execute() : Option[Canvas] = {
 		val points = BucketFill(x,y,colour,canvas)
-		canvas(points) = Some(colour)
+		canvas(points) = colour
 		ConsoleOutput(canvas)
 		Some(canvas)
 	}

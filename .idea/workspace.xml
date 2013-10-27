@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d663503a-a71d-4bc2-8106-84cf15d2a386" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.scala" afterPath="$PROJECT_DIR$/src/App.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Canvas.scala" afterPath="$PROJECT_DIR$/src/Canvas.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/Command.scala" afterPath="$PROJECT_DIR$/src/Commands/Command.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IO/ConsoleOutput.scala" afterPath="$PROJECT_DIR$/src/IO/ConsoleOutput.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Shapes/RectangleFactory.scala" afterPath="$PROJECT_DIR$/src/Shapes/RectangleFactory.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Shapes/LineFactory.scala" afterPath="$PROJECT_DIR$/src/Shapes/LineFactory.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Drawing.iws" />
@@ -14,7 +13,7 @@
     <file path="/Dummy.txt" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382814717154" ignored="false" />
     <file path="/fragment.java" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382804010519" ignored="false" />
     <file path="/Output.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382798156455" ignored="false" />
-    <file path="/Canvas.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382811955928" ignored="false" />
+    <file path="/Canvas.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382865693224" ignored="false" />
     <file path="/App.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382863272276" ignored="false" />
     <file path="/Lines.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382803573289" ignored="false" />
     <file path="/RectangleFactory.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382810116166" ignored="false" />
@@ -22,6 +21,7 @@
     <file path="/BucketFill.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382808255907" ignored="false" />
     <file path="/Command.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382863346261" ignored="false" />
     <file path="/ConsoleOutput.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382816490311" ignored="false" />
+    <file path="/LineFactory.scala" changelist="d663503a-a71d-4bc2-8106-84cf15d2a386" time="1382866018802" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,10 +110,10 @@
       <file leaf-file-name="LineFactory.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Shapes/LineFactory.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="3" selection-start="447" selection-end="447" vertical-scroll-proportion="0.4477612">
+            <state line="13" column="0" selection-start="491" selection-end="491" vertical-scroll-proportion="0.58208954">
               <folding>
-                <marker date="1382803810000" expanded="true" signature="289:532" placeholder="{...}" />
-                <marker date="1382803810000" expanded="true" signature="355:530" placeholder="{...}" />
+                <element signature="e#16#60#0" expanded="true" />
+                <marker date="1382866061000" expanded="true" signature="439:671" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -131,7 +131,7 @@
       <file leaf-file-name="Command.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Commands/Command.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="40" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0">
+            <state line="32" column="34" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#18#39#0" expanded="true" />
               </folding>
@@ -151,7 +151,7 @@
       <file leaf-file-name="Canvas.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Canvas.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1212" selection-end="1212" vertical-scroll-proportion="0.0">
+            <state line="26" column="24" selection-start="898" selection-end="898" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -189,14 +189,14 @@
         <option value="$PROJECT_DIR$/src/Drawing.scala" />
         <option value="$PROJECT_DIR$/src/Lines.scala" />
         <option value="$PROJECT_DIR$/src/RectangleFactory.scala" />
-        <option value="$PROJECT_DIR$/src/Shapes/LineFactory.scala" />
         <option value="$PROJECT_DIR$/src/IO/Output.scala" />
         <option value="$PROJECT_DIR$/src/Fill/BucketFill.scala" />
-        <option value="$PROJECT_DIR$/src/Canvas.scala" />
         <option value="$PROJECT_DIR$/src/Shapes/RectangleFactory.scala" />
         <option value="$PROJECT_DIR$/src/IO/ConsoleOutput.scala" />
         <option value="$PROJECT_DIR$/src/App.scala" />
+        <option value="$PROJECT_DIR$/src/Canvas.scala" />
         <option value="$PROJECT_DIR$/src/Commands/Command.scala" />
+        <option value="$PROJECT_DIR$/src/Shapes/LineFactory.scala" />
       </list>
     </option>
   </component>
@@ -520,6 +520,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707317" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6707317" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -532,10 +533,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707317" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.67247385" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32752612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32752612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
@@ -616,8 +616,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="3" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1382803810000" expanded="true" signature="289:532" placeholder="{...}" />
-            <marker date="1382803810000" expanded="true" signature="355:530" placeholder="{...}" />
+            <element signature="e#16#60#0" expanded="true" />
+            <marker date="1382866061000" expanded="true" signature="439:671" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -671,20 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Canvas.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1212" selection-end="1212" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shapes/RectangleFactory.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="19" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Fill/BucketFill.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="0" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.0">
@@ -699,15 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/Command.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="40" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#18#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="29" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
@@ -717,12 +694,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shapes/RectangleFactory.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="19" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/Command.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="34" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#18#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Canvas.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="24" selection-start="898" selection-end="898" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Shapes/LineFactory.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="3" selection-start="447" selection-end="447" vertical-scroll-proportion="0.4477612">
+        <state line="13" column="0" selection-start="491" selection-end="491" vertical-scroll-proportion="0.58208954">
           <folding>
-            <marker date="1382803810000" expanded="true" signature="289:532" placeholder="{...}" />
-            <marker date="1382803810000" expanded="true" signature="355:530" placeholder="{...}" />
+            <element signature="e#16#60#0" expanded="true" />
+            <marker date="1382866061000" expanded="true" signature="439:671" placeholder="{...}" />
           </folding>
         </state>
       </provider>

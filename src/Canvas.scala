@@ -16,12 +16,16 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	private val widthWithBorder = width+2
 	private val heightWithBorder = height+2
 
-	private var values = Array.tabulate[Option[Char]](heightWithBorder,widthWithBorder)
-	{
-		(h,w) => (h,w) match {
-			case(h,_) if (h == 0) || (h == heightWithBorder-1) => Some(Canvas.HorizontalBorder)
-			case(_,w) if (w == 0) || (w == widthWithBorder-1) =>  Some(Canvas.VerticalBorder)
-			case (_,_) =>  None
+	private val lastHeightPosition = heightWithBorder-1
+	private val lastWidthPosition = widthWithBorder-1
+
+	private val values = Array.tabulate[Option[Char]](heightWithBorder, widthWithBorder) {
+		(h, w) => (h, w) match {
+			case (0,_) => Some(Canvas.HorizontalBorder)
+			case (`lastHeightPosition`,_) => Some(Canvas.HorizontalBorder)
+			case (_,0) => Some(Canvas.VerticalBorder)
+			case (_, `lastWidthPosition`) => Some(Canvas.VerticalBorder)
+			case _ => None
 		}
 	}
 
@@ -31,10 +35,10 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 
 	def apply(row: Int): Array[Option[Char]] = return values(row)
 
-	def update(width: Int, height: Int, value: Option[Char]) = values(height)(width) = value
+	def update(width: Int, height: Int, value: Char) = values(height)(width) = Some(value)
 
-	def update(points: Seq[(Int,Int)], value: Option[Char]) = points.foreach {
-		case (width,height) => values(height)(width) = value
+	def update(points: Seq[(Int,Int)], value: Char) = points.foreach {
+		case (width,height) => values(height)(width) = Some(value)
 	}
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
