@@ -1,11 +1,11 @@
 package Commands
 
 import Drawing.Canvas
-import Fill.BucketFill
+import Fill.BucketFillFactory
 
 class FillCanvas(x: Int, y: Int, colour: Char, canvas: Canvas) extends Command {
 	def Execute(): Option[Canvas] = {
-		val points = BucketFill(x, y, colour, canvas)
+		val points = BucketFillFactory(x, y, colour, canvas)
 		canvas(points) = colour
 		Some(canvas)
 	}
