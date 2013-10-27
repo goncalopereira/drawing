@@ -2,7 +2,7 @@ package Drawing
 
 /*
 	Protecting direct access to Matrix (Open/Close)
-  Option instead of ' ' Char for non-existing to separate OS implementation from value
+  Option instead of ' ' Char for non-existing to separate Convert implementation from value
   using concept of width and height as as matrix is represented by y,x
  */
 object Canvas {
