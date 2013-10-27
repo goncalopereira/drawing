@@ -24,12 +24,8 @@ object App {
 				case Some(c: Quit) => {
 					running = false
 				}
-				case Some(c: CreateCanvas) => {
-					canvas = c.Execute()
-					print(canvas.get)
-				}
 				case Some(c: Command) => {
-					c.Execute()
+					canvas = c.Execute()
 					print(canvas.get)
 				}
 				case _ => {}

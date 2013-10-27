@@ -1,11 +1,11 @@
-package test.scala
+package test.unit
 
 import org.specs2.mutable.Specification
 import Shapes.LineFactory
 
 class LineFactoryTests extends Specification {
 
-	"Given two points not on same line" should {
+	"Two points not on same line" should {
 		val x = 1
 		val y = 2
 		val x2 = 2
@@ -14,13 +14,13 @@ class LineFactoryTests extends Specification {
 		"When building a line" in {
 			var results = LineFactory(x,y,x2,y2)
 
-			"Then return no results" in {
+			"Return no results" in {
 				results must have size(0)
 			}
 		}
 	}
 
-	"Given two points on horizontal line" should {
+	"Two points on horizontal line" should {
 		val x = 1
 		val y = 3
 		val y2 = 6
@@ -28,11 +28,11 @@ class LineFactoryTests extends Specification {
 		"When building a line" in {
 			var results = LineFactory(x,y,x,y2)
 
-			"Then return correct number of points in line" in {
+			"Return correct number of points in line" in {
 				results must have size(4)
 			}
 
-			"Then return points from first to second" in {
+			"Return points from first to second" in {
 				results must contain((x,3))
 				results must contain((x,4))
 				results must contain((x,5))
@@ -41,7 +41,7 @@ class LineFactoryTests extends Specification {
 		}
 	}
 
-	"Given two points on vertical line" should {
+	"Two points on vertical line" should {
 		val x = 1
 		val x2 = 4
 		val y = 3
@@ -49,11 +49,11 @@ class LineFactoryTests extends Specification {
 		"When building a line" in {
 			var results = LineFactory(x,y,x2,y)
 
-			"Then return correct number of points in line" in {
+			"Return correct number of points in line" in {
 				results must have size(4)
 			}
 
-			"Then return points from first to second" in {
+			"Return points from first to second" in {
 				results must contain((1,y))
 				results must contain((2,y))
 				results must contain((3,y))
