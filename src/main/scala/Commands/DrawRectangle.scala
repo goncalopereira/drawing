@@ -1,6 +1,6 @@
 package Commands
 
-import Drawing.Canvas
+import Canvas.Canvas
 import Shapes.RectangleFactory
 
 class DrawRectangle(x: Int, y: Int, x2: Int, y2: Int, canvas: Canvas) extends Command {

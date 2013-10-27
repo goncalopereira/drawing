@@ -1,6 +1,6 @@
 package Commands
 
-import Drawing.Canvas
+import Canvas.Canvas
 
 trait Command {
 	def Execute(): Option[Canvas]

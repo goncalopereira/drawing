@@ -1,6 +1,6 @@
 package Commands
 
-import Drawing.Canvas
+import Canvas.Canvas
 
 class Quit extends Command {
 	def Execute(): Option[Canvas] = {

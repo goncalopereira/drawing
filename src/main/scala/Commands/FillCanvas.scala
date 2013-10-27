@@ -1,6 +1,6 @@
 package Commands
 
-import Drawing.Canvas
+import Canvas.Canvas
 import Fill.BucketFillFactory
 
 class FillCanvas(x: Int, y: Int, colour: Char, canvas: Canvas) extends Command {

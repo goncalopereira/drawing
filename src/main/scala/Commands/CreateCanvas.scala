@@ -1,6 +1,6 @@
 package  Commands
 
-import Drawing.Canvas
+import Canvas.Canvas
 
 class CreateCanvas(width: Int, height: Int) extends Command {
 	def Execute(): Option[Canvas] = {

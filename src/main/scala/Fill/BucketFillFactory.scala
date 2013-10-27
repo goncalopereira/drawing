@@ -1,6 +1,6 @@
 package Fill
 
-import Drawing.Canvas
+import Canvas.Canvas
 
 /*
 http://en.wikipedia.org/wiki/Flood_fill

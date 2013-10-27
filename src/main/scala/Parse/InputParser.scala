@@ -1,7 +1,7 @@
 package Parse
 
 import Commands._
-import Drawing.Canvas
+import Canvas.Canvas
 
 /*
 Includes all details on string to command

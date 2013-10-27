@@ -1,5 +1,5 @@
+import Canvas.Canvas
 import Commands._
-import Drawing.Canvas
 import Parse.InputParser
 
 /*

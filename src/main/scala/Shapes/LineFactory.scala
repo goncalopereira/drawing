@@ -1,8 +1,8 @@
 package Shapes
 /*
-Abstracting line algorithm from Canvas and Draw
+Abstracting line algorithm from main.scala.Canvas and Draw
 KISS because there are only two types of line, more variations could be replaced with Chain of Responsibility
-No need to make a Line class and no space validation, it's a separate concept from Canvas
+No need to make a Line class and no space validation, it's a separate concept from main.scala.Canvas
 Although an empty list is not a line it's just for convenience
 */
 object LineFactory {
