@@ -1,19 +1,23 @@
 tested with MacOS with Homebrew
-$brew install sbt  (0.13)
-$brew install scala (2.10.3)
+$ brew install sbt  (0.13)
+$ brew install scala (2.10.3)
 
 tested with vanilla Debian stable with Vagrant:
-$apt-get install scala (2.9.10)
-$wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb
-$dpkg -i sbt.deb (0.13)
+$ apt-get install scala (2.9.2)
+$ wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb
+$ dpkg -i sbt.deb (0.13)
 If the image has very little memory SBT might fail.. use the -mem flag to reduce memory
 
-RUN APP:
-$ sbt run
+UPDATE:
+Wil pick up correct scala version, specs...
+$ sbt update
 
 RUN TESTS:
 Bundled with specs2
 $ sbt test
+
+RUN APP:
+$ sbt run
 
 PACKAGE WITH ALL DEPENDENCIES:
 Bundled from https://github.com/sbt/sbt-assembly

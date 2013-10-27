@@ -1,6 +1,8 @@
 package test.scala
 
-//object ShapesSpec extends Specification {
+import org.specs._
+
+object ShapesSpec extends Specification {
 
 
-//}
+}
