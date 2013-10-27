@@ -1,7 +1,4 @@
 import Commands._
-import Drawing._
-import Fill.BucketFill
-import Shapes._
 
 object App {
 
