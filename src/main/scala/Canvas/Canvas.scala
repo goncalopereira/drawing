@@ -15,17 +15,17 @@ object Canvas {
 
 class Canvas(private val width: Int, private val height: Int) extends Seq[Array[Option[Char]]] {
 
-	private val widthWithBorder = width+2
-	private val heightWithBorder = height+2
+	private val widthWithBorder = width + 2
+	private val heightWithBorder = height + 2
 
-	private val lastHeightPosition = heightWithBorder-1
-	private val lastWidthPosition = widthWithBorder-1
+	private val lastHeightPosition = heightWithBorder - 1
+	private val lastWidthPosition = widthWithBorder - 1
 
 	private val values = Array.tabulate[Option[Char]](heightWithBorder, widthWithBorder) {
 		(h, w) => (h, w) match {
-			case (0,_) => Some(Canvas.HorizontalBorder)
-			case (`lastHeightPosition`,_) => Some(Canvas.HorizontalBorder)
-			case (_,0) => Some(Canvas.VerticalBorder)
+			case (0, _) => Some(Canvas.HorizontalBorder)
+			case (`lastHeightPosition`, _) => Some(Canvas.HorizontalBorder)
+			case (_, 0) => Some(Canvas.VerticalBorder)
 			case (_, `lastWidthPosition`) => Some(Canvas.VerticalBorder)
 			case _ => None
 		}
@@ -39,17 +39,17 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 
 	def update(width: Int, height: Int, value: Char) = values(height)(width) = Some(value)
 
-	def update(points: Seq[(Int,Int)], value: Char) = points.foreach {
-		case (width,height) => values(height)(width) = Some(value)
+	def update(points: Seq[(Int, Int)], value: Char) = points.foreach {
+		case (width, height) => values(height)(width) = Some(value)
 	}
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
 
-  override def toString(): String = {
+	override def toString(): String = {
 		var output: String = ""
 
 		this.foreach(row => {
-			output += row.foldLeft("") ((line,rowValue) => line+rowValue.getOrElse(Output.EmptyChar))
+			output += row.foldLeft("")((line, rowValue) => line + rowValue.getOrElse(Output.EmptyChar))
 			output += Output.NewLine
 		})
 

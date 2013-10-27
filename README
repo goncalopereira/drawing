@@ -12,6 +12,7 @@ RUN APP:
 $ sbt run
 
 RUN TESTS:
+Bundled with specs2
 $ sbt test
 
 PACKAGE WITH ALL DEPENDENCIES:

@@ -19,11 +19,11 @@ class InputParser {
 	private def CreateCanvas(ss: Array[String]): Option[Command] = {
 
 		if (ss.length != 2)
-				return None
+			return None
 
 		val i = ss.map(_.toInt)
 
-		Some(new CreateCanvas(i(0),i(1)))
+		Some(new CreateCanvas(i(0), i(1)))
 	}
 
 	private def DrawLine(ss: Array[String], canvas: Canvas): Option[Command] = {
@@ -32,7 +32,7 @@ class InputParser {
 
 		val i = ss.map(_.toInt)
 
-		Some(new DrawLine(i(0),i(1),i(2),i(3),canvas))
+		Some(new DrawLine(i(0), i(1), i(2), i(3), canvas))
 	}
 
 	private def DrawRectangle(ss: Array[String], canvas: Canvas): Option[Command] = {
@@ -41,10 +41,10 @@ class InputParser {
 
 		val i = ss.map(_.toInt)
 
-		Some(new DrawRectangle(i(0),i(1),i(2),i(3),canvas))
+		Some(new DrawRectangle(i(0), i(1), i(2), i(3), canvas))
 	}
 
-	private def FillCanvas(ss: Array[String],canvas: Canvas): Option[Command] =  {
+	private def FillCanvas(ss: Array[String], canvas: Canvas): Option[Command] = {
 		if (ss.length != 3)
 			return None
 
@@ -52,19 +52,19 @@ class InputParser {
 		val i2 = ss(1).toInt
 		val colour = ss(2).head
 
-		Some(new FillCanvas(i1,i2,colour,canvas))
+		Some(new FillCanvas(i1, i2, colour, canvas))
 	}
 
 	def apply(input: String, canvas: Option[Canvas]): Option[Command] = {
 
-	 val args = input.split(Separator)
+		val args = input.split(Separator)
 
-		(args(0),canvas) match {
-			case (CreateCanvasArgument,_) => CreateCanvas(args.tail)
-			case (DrawLineArgument,Some(c)) => DrawLine(args.tail,c)
-			case (DrawRectangleArgument,Some(c)) => DrawRectangle(args.tail,c)
-			case (FillCanvasArgument,Some(c)) => FillCanvas(args.tail,c)
-			case (QuitArgument,_) => Some(new Quit())
+		(args(0), canvas) match {
+			case (CreateCanvasArgument, _) => CreateCanvas(args.tail)
+			case (DrawLineArgument, Some(c)) => DrawLine(args.tail, c)
+			case (DrawRectangleArgument, Some(c)) => DrawRectangle(args.tail, c)
+			case (FillCanvasArgument, Some(c)) => FillCanvas(args.tail, c)
+			case (QuitArgument, _) => Some(new Quit())
 			case _ => None
 		}
 	}

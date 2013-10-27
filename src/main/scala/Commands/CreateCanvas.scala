@@ -1,4 +1,4 @@
-package  Commands
+package Commands
 
 import Canvas.Canvas
 

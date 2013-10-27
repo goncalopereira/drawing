@@ -17,55 +17,55 @@ Flood-fill (node, target-color, replacement-color):
 object BucketFillFactory {
 
 	private def Travel(x: Int, y: Int, colour: Char, canvas: Canvas,
-	                   toColour: Seq[(Int,Int)],
-	                   toIgnore: Seq[(Int,Int)]):
+	                   toColour: Seq[(Int, Int)],
+	                   toIgnore: Seq[(Int, Int)]):
 
-		(Seq[(Int,Int)],Seq[(Int,Int)]) = {
+	(Seq[(Int, Int)], Seq[(Int, Int)]) = {
 
 		if (y >= canvas.length || x >= canvas(0).length || x < 0 || y < 0)
-			return (Seq[((Int,Int))] (),Seq[((Int,Int))] ())
+			return (Seq[((Int, Int))](), Seq[((Int, Int))]())
 
-		if (toColour.contains((x,y)))
-			return (Seq[((Int,Int))] (),Seq[((Int,Int))] ())
+		if (toColour.contains((x, y)))
+			return (Seq[((Int, Int))](), Seq[((Int, Int))]())
 
-		if (toIgnore.contains((x,y)))
-			return (Seq[((Int,Int))] (),Seq[((Int,Int))] ())
+		if (toIgnore.contains((x, y)))
+			return (Seq[((Int, Int))](), Seq[((Int, Int))]())
 
 		canvas(x, y) match {
 
-			case Some(Canvas.HorizontalBorder) => return (Seq[((Int,Int))] (),List((x,y)))
-			case Some(Canvas.VerticalBorder) => return (Seq[((Int,Int))] (),List((x,y)))
-			case Some(Canvas.Line) => return (Seq[((Int,Int))] (),List((x,y)))
-			case Some(colour) => return (Seq[((Int,Int))] (),List((x,y)))
+			case Some(Canvas.HorizontalBorder) => return (Seq[((Int, Int))](), List((x, y)))
+			case Some(Canvas.VerticalBorder) => return (Seq[((Int, Int))](), List((x, y)))
+			case Some(Canvas.Line) => return (Seq[((Int, Int))](), List((x, y)))
+			case Some(colour) => return (Seq[((Int, Int))](), List((x, y)))
 
 			case _ => {
 
-				var c = toColour ++ List((x,y))
+				var c = toColour ++ List((x, y))
 				var i = toIgnore
 
-				val (cWest,iWest) = Travel(x - 1, y, colour, canvas,c,i)
-				c = c++cWest
-				i = i++iWest
+				val (cWest, iWest) = Travel(x - 1, y, colour, canvas, c, i)
+				c = c ++ cWest
+				i = i ++ iWest
 
-				val (cEast,iEast) = Travel(x + 1, y, colour, canvas,c,i)
-				c = c++cEast
-				i = i++iEast
+				val (cEast, iEast) = Travel(x + 1, y, colour, canvas, c, i)
+				c = c ++ cEast
+				i = i ++ iEast
 
-				val (cNorth,iNorth) = Travel(x, y+1, colour, canvas,c,i)
-				c = c++cNorth
-				i = i++iNorth
+				val (cNorth, iNorth) = Travel(x, y + 1, colour, canvas, c, i)
+				c = c ++ cNorth
+				i = i ++ iNorth
 
-				val (cSouth,iSouth) = Travel(x, y-1, colour, canvas,c,i)
-				c = c++cSouth
-				i = i++iSouth
-				return (c,i)
+				val (cSouth, iSouth) = Travel(x, y - 1, colour, canvas, c, i)
+				c = c ++ cSouth
+				i = i ++ iSouth
+				return (c, i)
 
 			}
 		}
 	}
 
 	def apply(x: Int, y: Int, colour: Char, canvas: Canvas): Seq[(Int, Int)] = {
-	  val (c,_) = Travel(x,y,colour,canvas,Seq[(Int,Int)](),Seq[(Int,Int)]())
+		val (c, _) = Travel(x, y, colour, canvas, Seq[(Int, Int)](), Seq[(Int, Int)]())
 		return c
 	}
 }
