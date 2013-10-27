@@ -2,8 +2,8 @@ name := "Drawing"
 
 version := "1.0"
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.9.3"
 
 libraryDependencies ++= Seq(
-   "org.scala-tools.testing" % "specs_2.8.0" % "1.6.5" % "test"
+   "org.specs2" %% "specs2" % "1.12.4.1" % "test"
 )

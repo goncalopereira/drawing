@@ -10,6 +10,7 @@ If the image has very little memory SBT might fail.. use the -mem flag to reduce
 
 UPDATE:
 Wil pick up correct scala version, specs...
+Also added sbt-idea to help manage specs with IntelliJ
 $ sbt update
 
 RUN TESTS:
