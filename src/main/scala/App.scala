@@ -15,32 +15,23 @@ object App {
 
 			val parser = new InputParser()
 
-
 			do {
 					val input = Console.readLine("\nenter command: ")
 
 				  command = parser(input,canvas)
 
 				  command match {
-					  case Some(c:CreateCanvas) => {
-						  canvas = c.Execute()
-						  print(canvas.get)
-					  }
-						case Some(c:DrawLine) => {
-							c.Execute()
-							print(canvas.get)
-						}
-						case Some(c:DrawRectangle) => {
-							c.Execute()
-							print(canvas.get)
-						}
-						case Some(c:FillCanvas) => {
-							c.Execute()
-							print(canvas.get)
-						}
 						case Some(c:Quit) => {
 							running = false
 						}
+						case Some(c: CreateCanvas) => {
+							canvas = c.Execute()
+							print(canvas.get)
+						}
+						case Some(c: Command) => {
+							c.Execute()
+							print(canvas.get)
+				    }
 						case _ => {}
 				  }
 			  } while (running)
