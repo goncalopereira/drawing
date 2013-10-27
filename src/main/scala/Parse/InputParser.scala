@@ -16,7 +16,7 @@ class InputParser {
 	val FillCanvasArgument = "B"
 	val QuitArgument = "Q"
 
-	def CreateCanvas(ss: Array[String]): Option[Command] = {
+	private def CreateCanvas(ss: Array[String]): Option[Command] = {
 
 		if (ss.length != 2)
 				return None
@@ -25,7 +25,8 @@ class InputParser {
 
 		Some(new CreateCanvas(i(0),i(1)))
 	}
-	def DrawLine(ss: Array[String], canvas: Canvas): Option[Command] = {
+
+	private def DrawLine(ss: Array[String], canvas: Canvas): Option[Command] = {
 		if (ss.length != 4)
 			return None
 
@@ -34,7 +35,7 @@ class InputParser {
 		Some(new DrawLine(i(0),i(1),i(2),i(3),canvas))
 	}
 
-	def DrawRectangle(ss: Array[String], canvas: Canvas): Option[Command] = {
+	private def DrawRectangle(ss: Array[String], canvas: Canvas): Option[Command] = {
 		if (ss.length != 4)
 			return None
 
@@ -43,7 +44,7 @@ class InputParser {
 		Some(new DrawRectangle(i(0),i(1),i(2),i(3),canvas))
 	}
 
-	def FillCanvas(ss: Array[String],canvas: Canvas): Option[Command] =  {
+	private def FillCanvas(ss: Array[String],canvas: Canvas): Option[Command] =  {
 		if (ss.length != 3)
 			return None
 
