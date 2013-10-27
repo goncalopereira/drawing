@@ -15,3 +15,13 @@ $ sbt run
 
 RUN TESTS:
 $ sbt test
+
+PACKAGE:
+$ sbt package
+
+RUN PACKAGE WITH SCALA:
+$ cd target/scala-2.10/  (depends on scala version)
+$ scala drawing_2.10-0.1-SNAPSHOT.jar (depends on scala version)
+
+RUN PACKAGE WITH JVM:
+$ java -cp /usr
