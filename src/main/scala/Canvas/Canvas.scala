@@ -32,15 +32,24 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	}
 
 	def length: Int = values.length
-
-	def apply(width: Int, height: Int): Option[Char] = return values(height)(width)
+  
+  private def internalPosition(x: Int, y: Int): Boolean = {     
+    return (x >= 1 && y >= 1 && x <= lastWidthPosition && y <= lastHeightPosition)
+  }
+	def apply(width: Int, height: Int): Option[Char] = {
+    
+    if (width >= 0 && height >= 0 && width <= widthWithBorder && height <= heightWithBorder) {
+      return values(height)(width)
+    } 
+    else None
+  }
 
 	def apply(row: Int): Array[Option[Char]] = return values(row)
 
 	def update(width: Int, height: Int, value: Char) { update(List((width,height)),value) }
 
 	def update(points: Seq[(Int, Int)], value: Char) { 
-    val filtered = points.filter(p => (p._1 >= 1 && p._2 >= 1 && p._1 <= lastWidthPosition && p._2 <= lastHeightPosition))
+    val filtered = points.filter(p => internalPosition(p._1,p._2))
 
     filtered.foreach {
 		  case (width, height) => values(height)(width) = Some(value)
