@@ -3,21 +3,20 @@ package test.scala.Unit.Parse
 import Canvas.Canvas
 import Commands.{DrawLine, Command, CreateCanvas}
 import org.specs2.mutable.Specification
-import Parse.InputParser
+import Parse._
 
 /*
 Need to do same tests for other commands...
  */
 class InputParserTests extends Specification {
 
-	val parser = new InputParser(InputParser.Parsers)
+	"Given no parsers" should {
 
-	"String with unknown command argument for valid canvas" should {
-
+	  val parser = new InputParser(List[Parser]())
 		val unknown = "X 1 2 3"
 		val canvas = new Canvas(5,5)
 
-		"When parsed" in {
+		"When string parsed" in {
 
 			val results = parser(unknown,Some(canvas))
 
@@ -27,59 +26,37 @@ class InputParserTests extends Specification {
 		}
 	}
 
-	"Valid string for CreateCanvas" should {
-		val c = "C 2 10"
+  "Given CreateCanvas parser" should {
+    val parser = new InputParser(List(new CreateCanvasParser()))
+    
+    val validCreate = "C 5 5"
+    val unparsableCreate = "C a 5"
+    val wrongCommand = "L 1 1 1 2"
 
-		"When parsed" in {
-			val results = parser(c,None)
+    "When valid string parsed" in {
+      val results = parser(validCreate,None)
+      
+      "Return correct command" in {
+        results must beSome[Command]
+      }
 
-		  "Return CreateCanvas Command" in {
-			  results must beSome[Command]
-			  results.get must beAnInstanceOf[CreateCanvas]
-		  }
+    "When unparsable create command" in {
+        val results = parser(unparsableCreate,None)
+        
+        "Return none" in {
+          results must beNone
+        }
+     }
 
-			"Have correct size" in {
-				val r: CreateCanvas = results.get.asInstanceOf[CreateCanvas]
-				r.width mustEqual 2
-				r.height mustEqual 10
-			}
-		}
-	}
-
-	"String with non parsable argument for CreateCanvas" should {
-
-		val c = "C a 20"
-
-		"When parsed" in {
-
-			val results = parser(c,None)
-
-			"Return none" in {
-				results must beNone
-			}
-		}
-	}
-
-	"String with valid Line command" should {
-
-		val c = "L 1 2 1 4"
-
-		"When parsed with no canvas" in {
-			val results = parser(c,None)
-
-			"Return none" in {
-				results must beNone
-			}
-
-			"When parsed with valid canvas" in {
-				val canvas = Some(new Canvas(10,10))
-				val results = parser(c,canvas)
-
-				"Return Line command" in {
-					results must beSome[Command]
-					results.get must beAnInstanceOf[DrawLine]
-				}
-			}
-		}
-	}
+     "When sent wrong valid command" in {
+        val results = parser(wrongCommand,None)
+        
+        "Return none" in {
+          results must beNone
+        }
+      }
+      
+    }
+    
+   }
 }
