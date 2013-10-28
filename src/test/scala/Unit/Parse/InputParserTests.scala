@@ -6,6 +6,7 @@ import org.specs2.mutable.Specification
 import Parse._
 import org.specs2.mock.Mockito
 
+
 class InputParserTests extends Specification with Mockito {
 
 	"Given no parsers" should {
@@ -27,7 +28,6 @@ class InputParserTests extends Specification with Mockito {
 	"Given parser" should {
 
 		"When valid string parsed" in {
-
 
 			"Return correct command" in {
 

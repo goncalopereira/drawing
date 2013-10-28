@@ -9,7 +9,7 @@ $ dpkg -i sbt.deb (0.13)
 If the image has very little memory SBT might fail.. use the -mem flag to reduce memory
 
 UPDATE:
-Wil pick up correct scala version, specs...
+Wil pick up correct scala version, specs, mockito...
 Also added sbt-idea to help manage specs with IntelliJ
 $ sbt update
 

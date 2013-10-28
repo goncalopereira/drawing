@@ -19,22 +19,16 @@ trait Parser {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
 
-		println("valid")
 		if (!ValidCanvas(canvas))
 			return Left(InputParser.RequireCanvas)
 
-		println("correct")
 		if (!CorrectNumberOfArguments(ss.length))
 			return Left(InputParser.WrongNumberOfArguments)
 
-		print("parse")
 		val parsing: Either[Boolean, ParseArguments] = Parse(ss)
 
-		println("isl")
 		if (parsing.isLeft)
 			return Left(InputParser.ParsingError)
-
-		println("isr")
 
 		Right(CreateCommand(parsing.right.get,canvas))
 	}
