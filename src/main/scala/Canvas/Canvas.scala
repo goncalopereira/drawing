@@ -62,8 +62,7 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 		var output: String = ""
 
 		this.foreach(row => {
-			output += row.foldLeft("")((line, rowValue) => line + rowValue.getOrElse(Output.EmptyChar))
-			output += Output.NewLine
+			output += row.foldLeft("")((line, rowValue) => line + rowValue.getOrElse(Output.EmptyChar)) + Output.NewLine
 		})
 
 		output
