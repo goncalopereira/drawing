@@ -10,7 +10,7 @@ Need to do same tests for other commands...
  */
 class InputParserTests extends Specification {
 
-	val parser = new InputParser()
+	val parser = new InputParser(InputParser.Parsers)
 
 	"String with unknown command argument for valid canvas" should {
 

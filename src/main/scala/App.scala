@@ -13,7 +13,7 @@ object App {
 		var canvas: Option[Canvas] = None
 		var running = true
 
-		val parser = new InputParser()
+		val parser = new InputParser(InputParser.Parsers)
 
 		do {
 			val input = Console.readLine("\nenter command: ")
