@@ -34,7 +34,7 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	def length: Int = values.length
   
   private def internalPosition(x: Int, y: Int): Boolean = {     
-    return (x >= 1 && y >= 1 && x <= lastWidthPosition && y <= lastHeightPosition)
+    return (x >= 1 && y >= 1 && x <= width && y <= height)
   }
 	def apply(width: Int, height: Int): Option[Char] = {
     
