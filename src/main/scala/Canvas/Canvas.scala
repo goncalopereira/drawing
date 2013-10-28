@@ -31,7 +31,7 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 		}
 	}
 
-	def length: Int = width
+	def length: Int = values.length
 
 	def apply(width: Int, height: Int): Option[Char] = return values(height)(width)
 

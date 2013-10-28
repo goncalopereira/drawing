@@ -1,4 +1,4 @@
-package test.scala.Unit.Shapes
+package Unit.Shapes
 
 import org.specs2.mutable.Specification
 import Shapes.RectangleFactory
