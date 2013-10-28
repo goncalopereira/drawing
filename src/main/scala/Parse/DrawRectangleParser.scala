@@ -7,8 +7,8 @@ class DrawRectangleParser extends Parser with CanvasRequired with OnlyIntArgumen
 
 	def ParserType(t: String): Boolean = t == "R"
 
-	protected def CorrectNumberOfArguments(i: Int): Boolean = i == 4
+	def CorrectNumberOfArguments(i: Int): Boolean = i == 4
 
-	protected def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
+	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
 		new DrawRectangle(parsed.is(0), parsed.is(1), parsed.is(2), parsed.is(3), canvas.get)
 }

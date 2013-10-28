@@ -7,8 +7,8 @@ class DrawLineParser extends Parser with CanvasRequired with OnlyIntArguments {
 
 	def ParserType(t: String): Boolean = t == "L"
 
-	protected def CorrectNumberOfArguments(i: Int): Boolean = i == 4
+	def CorrectNumberOfArguments(i: Int): Boolean = i == 4
 
-	protected def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
+	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
 		new DrawLine(parsed.is(0),parsed.is(1),parsed.is(2),parsed.is(3),canvas.get)
 }

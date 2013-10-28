@@ -4,8 +4,9 @@ import Canvas.Canvas
 import Commands.Command
 import org.specs2.mutable.Specification
 import Parse._
+import org.specs2.mock.Mockito
 
-class InputParserTests extends Specification {
+class InputParserTests extends Specification with Mockito {
 
 	"Given no parsers" should {
 
@@ -23,48 +24,58 @@ class InputParserTests extends Specification {
 		}
 	}
 
-	"Given CreateCanvas parser" should {
-		val parser = new InputParser(List(new CreateCanvasParser()))
-
-		val validCreate = "C 5 5"
-		val unparsableCreate = "C a 5"
-		val wrongCommand = "L 1 1 1 2"
+	"Given parser" should {
 
 		"When valid string parsed" in {
-			val results = parser(validCreate, None)
+
 
 			"Return correct command" in {
+
+				var p = mock[Parser]
+				val command = mock[Command]
+
+				p = mock[Parser]
+				p.Use(any[Array[String]]) returns true
+
+			  p.Execute(any[Array[String]],any[Option[Canvas]]) returns Right(command)
+
+				val parser = new InputParser(List(p))
+				val results = parser("", None)
+
 				results must beSome[Either[String, Command]]
 				results.get.isRight mustEqual true
+				results.get.right.get mustEqual command
 			}
 		}
 
 		"When unparsable create command" in {
-			val results = parser(unparsableCreate, None)
 
 			"Return error" in {
+				var p = mock[Parser]
+
+				p = mock[Parser]
+				p.Use(any[Array[String]]) returns true
+				p.Execute(any[Array[String]],any[Option[Canvas]]) returns Left("error")
+
+				val parser = new InputParser(List(p))
+				val results = parser("", None)
+
 				results must beSome[Either[String, Command]]
 				results.get.isLeft mustEqual true
 			}
 		}
 
 		"When sent wrong valid command" in {
-			val results = parser(wrongCommand, None)
+			var p = mock[Parser]
+			p = mock[Parser]
+			p.Use(any[Array[String]]) returns false
 
 			"Return none" in {
+				val parser = new InputParser(List(p))
+				val results = parser("", None)
+
 				results must beNone
 			}
 		}
-
-		"When sent empty string" in {
-			val results = parser("", None)
-
-			"Return none" in {
-				results must beNone
-			}
-		}
-
 	}
-
-
 }

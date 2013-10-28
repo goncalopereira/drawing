@@ -7,27 +7,34 @@ import Commands.Command
 hides details like argument, required to have canvas...
  */
 trait Parser {
-	protected def ValidCanvas(canvas: Option[Canvas]): Boolean
+	def ValidCanvas(canvas: Option[Canvas]): Boolean
 
-	protected def ParserType(t: String): Boolean
+	def ParserType(t: String): Boolean
 
-	protected def CorrectNumberOfArguments(i: Int): Boolean
+	def CorrectNumberOfArguments(i: Int): Boolean
 
-	protected def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command
+	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command
 
-	protected def Parse(ss: Array[String]): Either[Boolean,ParseArguments]
+	def Parse(ss: Array[String]): Either[Boolean,ParseArguments]
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
+
+		println("valid")
 		if (!ValidCanvas(canvas))
 			return Left(InputParser.RequireCanvas)
 
+		println("correct")
 		if (!CorrectNumberOfArguments(ss.length))
 			return Left(InputParser.WrongNumberOfArguments)
 
+		print("parse")
 		val parsing: Either[Boolean, ParseArguments] = Parse(ss)
 
+		println("isl")
 		if (parsing.isLeft)
 			return Left(InputParser.ParsingError)
+
+		println("isr")
 
 		Right(CreateCommand(parsing.right.get,canvas))
 	}
@@ -44,7 +51,7 @@ trait CanvasNotRequired {
 }
 
 trait OnlyIntArguments {
-	protected def Parse(ss: Array[String]): Either[Boolean,ParseArguments] = {
+	def Parse(ss: Array[String]): Either[Boolean,ParseArguments] = {
 		try {
 			val i = ss.map(_.toInt)
 			Right(new ParseArguments(i, None))

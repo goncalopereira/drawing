@@ -7,12 +7,12 @@ class FillCanvasParser extends Parser with CanvasRequired {
 
 	def ParserType(t: String): Boolean = t == "B"
 
-	protected def CorrectNumberOfArguments(i: Int): Boolean = i == 3
+	def CorrectNumberOfArguments(i: Int): Boolean = i == 3
 
-	protected def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
+	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
 		new FillCanvas(parsed.is(0),parsed.is(1),parsed.colour.get,canvas.get)
 
-	protected def Parse(ss: Array[String]) = {
+	def Parse(ss: Array[String]) = {
 		var i1, i2 = 0
 		var colour: Char = ' '
 
