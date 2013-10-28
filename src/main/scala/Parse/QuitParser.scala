@@ -10,5 +10,5 @@ class QuitParser extends Parser with CanvasNotRequired {
 
 	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command = new Quit()
 
-	def Parse(ss: Array[String]): Either[Boolean, ParseArguments] = Right(ParseArguments(Array(),None))
+	def Parse(ss: Array[String]): Either[Boolean, ParseArguments] = Right(ParseArguments(Array(), None))
 }

@@ -15,7 +15,7 @@ trait Parser {
 
 	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command
 
-	def Parse(ss: Array[String]): Either[Boolean,ParseArguments]
+	def Parse(ss: Array[String]): Either[Boolean, ParseArguments]
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
 
@@ -30,7 +30,7 @@ trait Parser {
 		if (parsing.isLeft)
 			return Left(InputParser.ParsingError)
 
-		Right(CreateCommand(parsing.right.get,canvas))
+		Right(CreateCommand(parsing.right.get, canvas))
 	}
 
 	def Use(ss: Array[String]) = ParserType(ss.head)
@@ -45,7 +45,7 @@ trait CanvasNotRequired {
 }
 
 trait OnlyIntArguments {
-	def Parse(ss: Array[String]): Either[Boolean,ParseArguments] = {
+	def Parse(ss: Array[String]): Either[Boolean, ParseArguments] = {
 		try {
 			val i = ss.map(_.toInt)
 			Right(new ParseArguments(i, None))
@@ -56,4 +56,4 @@ trait OnlyIntArguments {
 	}
 }
 
-case class ParseArguments(is: Array[Int],colour: Option[Char])
+case class ParseArguments(is: Array[Int], colour: Option[Char])

@@ -37,7 +37,7 @@ class InputParserTests extends Specification with Mockito {
 				p = mock[Parser]
 				p.Use(any[Array[String]]) returns true
 
-			  p.Execute(any[Array[String]],any[Option[Canvas]]) returns Right(command)
+				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Right(command)
 
 				val parser = new InputParser(List(p))
 				val results = parser("", None)
@@ -55,7 +55,7 @@ class InputParserTests extends Specification with Mockito {
 
 				p = mock[Parser]
 				p.Use(any[Array[String]]) returns true
-				p.Execute(any[Array[String]],any[Option[Canvas]]) returns Left("error")
+				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Left("error")
 
 				val parser = new InputParser(List(p))
 				val results = parser("", None)

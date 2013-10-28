@@ -16,7 +16,7 @@ class CreateCanvasParserTests extends Specification {
 		"When executed" in {
 
 			val p = new CreateCanvasParser()
-			val results = p.Execute(s.split(" ").tail,None)
+			val results = p.Execute(s.split(" ").tail, None)
 
 			"Return correct command" in {
 				results.isRight mustEqual true
