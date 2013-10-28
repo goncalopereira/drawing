@@ -6,6 +6,9 @@ import Commands.CreateCanvas
 class CreateCanvasParser extends Parser with CanvasNotRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, CreateCanvas] = {
+		if (!ValidCanvas(canvas))
+			return Left(InputParser.RequireCanvas)
+
 		if (ss.length != 2)
 			return Left(InputParser.WrongNumberOfArguments)
 

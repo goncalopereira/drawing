@@ -13,7 +13,7 @@ trait Parser {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command]
 
-	def Use(ss: Array[String], canvas: Option[Canvas]) = ValidCanvas(canvas) && ParserType(ss.head)
+	def Use(ss: Array[String], canvas: Option[Canvas]) = ParserType(ss.head)
 }
 
 trait CanvasRequired {

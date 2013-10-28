@@ -13,6 +13,7 @@ object InputParser {
 
 	val ParsingError = "Parsing error"
 	val WrongNumberOfArguments = "Wrong number of Arguments"
+	val RequireCanvas = "Requires Canvas"
 }
 
 class InputParser(availableParsers: List[Parser]) {

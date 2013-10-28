@@ -6,6 +6,9 @@ import Commands.DrawRectangle
 class DrawRectangleParser extends Parser with CanvasRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, DrawRectangle] = {
+		if (!ValidCanvas(canvas))
+			return Left(InputParser.RequireCanvas)
+
 		if (ss.length != 4)
 			return Left(InputParser.WrongNumberOfArguments)
 

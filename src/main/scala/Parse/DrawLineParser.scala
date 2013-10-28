@@ -6,6 +6,9 @@ import Commands.DrawLine
 class DrawLineParser extends Parser with CanvasRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, DrawLine] = {
+		if (!ValidCanvas(canvas))
+			return Left(InputParser.RequireCanvas)
+
 		if (ss.length != 4)
 			return Left(InputParser.WrongNumberOfArguments)
 
