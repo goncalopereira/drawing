@@ -19,6 +19,9 @@ class CanvasTests extends Specification {
       "Have correct height" in {
         canvas must have size(height+2)
       }
+      "Have empty points" in {
+        canvas(1,1) mustEqual None
+      }
       "Print correctly" in {
         canvas.toString mustEqual  """----------
 |        |
@@ -32,7 +35,18 @@ class CanvasTests extends Specification {
 """
       }
     }
+      
+     "When updating a Canvas" in {
+        val updateCanvas = new Canvas(width,height)
 
-  }
-  
+        "Update correctly in matrix" in {
+          updateCanvas(1,1) = 'x'
+          updateCanvas(1,1) mustEqual Some('x')
+        }
+        "Not allow to update borders" in {
+          updateCanvas(0,0) = 'x'
+          updateCanvas(0,0) mustEqual Some('-')
+        }
+      }
+    }  
 }

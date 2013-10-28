@@ -37,11 +37,15 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 
 	def apply(row: Int): Array[Option[Char]] = return values(row)
 
-	def update(width: Int, height: Int, value: Char) = values(height)(width) = Some(value)
+	def update(width: Int, height: Int, value: Char) { update(List((width,height)),value) }
 
-	def update(points: Seq[(Int, Int)], value: Char) = points.foreach {
-		case (width, height) => values(height)(width) = Some(value)
-	}
+	def update(points: Seq[(Int, Int)], value: Char) { 
+    val filtered = points.filter(p => (p._1 >= 1 && p._2 >= 1 && p._1 <= lastWidthPosition && p._2 <= lastHeightPosition))
+
+    filtered.foreach {
+		  case (width, height) => values(height)(width) = Some(value)
+	  }
+  }
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
 
