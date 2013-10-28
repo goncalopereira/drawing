@@ -14,7 +14,6 @@ class BucketFillFactoryTests extends Specification {
 				val canvas = new Canvas(5,5)
 
 				val points = BucketFillFactory(1,1,colour,canvas)
-				println(points)
 
 				canvas(points) = colour
 
