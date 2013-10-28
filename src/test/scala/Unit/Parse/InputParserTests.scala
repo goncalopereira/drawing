@@ -5,9 +5,6 @@ import Commands.{DrawLine, Command, CreateCanvas}
 import org.specs2.mutable.Specification
 import Parse._
 
-/*
-Need to do same tests for other commands...
- */
 class InputParserTests extends Specification {
 
 	"Given no parsers" should {
@@ -39,6 +36,7 @@ class InputParserTests extends Specification {
       "Return correct command" in {
         results must beSome[Command]
       }
+    }
 
     "When unparsable create command" in {
         val results = parser(unparsableCreate,None)
@@ -55,8 +53,16 @@ class InputParserTests extends Specification {
           results must beNone
         }
       }
+
+      "When sent empty string" in {
+        val results = parser("",None)
+        
+        "Return none" in {
+          results must beNone
+        }
+      }
       
     }
     
-   }
+   
 }

@@ -19,9 +19,12 @@ class InputParser(availableParsers: List[Parser]) {
 	def apply(input: String, canvas: Option[Canvas]): Option[Command] = {
 
 		val args = input.split(Separator)
-
+    
+    if (args.length == 1)
+      return None
+     
 		availableParsers
-			.filter(p => p.ValidCanvas(canvas) && p.ParserType(args(0).head))
+			.filter(p => p.ValidCanvas(canvas) && p.ParserType(args.head.head))
 			.map(p => p.Execute(args.tail,canvas))
 			.flatten
 			.headOption
