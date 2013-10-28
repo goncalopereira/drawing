@@ -2,12 +2,12 @@ package Drawing
 
 import Canvas.Canvas
 import Commands.{Quit, Command}
-import IO.IO
+import IO.{Output, IO}
 import Parse.InputParser
 
 class Drawing(io: IO) {
 
-	private val EnterCommand = "\nenter command: "
+	private val EnterCommand = Output.NewLine + "enter command: "
 	private val CommandNotFound = "Command not found"
 
 	def apply() {
