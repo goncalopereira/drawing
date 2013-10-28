@@ -1,16 +1,18 @@
 package Parse
 
 import Canvas.Canvas
-import Commands.FillCanvas
+import Commands.{Command, FillCanvas}
 
 class FillCanvasParser extends Parser with CanvasRequired {
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, FillCanvas] = {
-		if (!ValidCanvas(canvas))
-			return Left(InputParser.RequireCanvas)
 
-		if (ss.length != 3)
-			return Left(InputParser.WrongNumberOfArguments)
+	def ParserType(t: String): Boolean = t == "B"
 
+	protected def CorrectNumberOfArguments(i: Int): Boolean = i == 3
+
+	protected def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
+		new FillCanvas(parsed.is(0),parsed.is(1),parsed.colour.get,canvas.get)
+
+	protected def Parse(ss: Array[String]) = {
 		var i1, i2 = 0
 		var colour: Char = ' '
 
@@ -18,13 +20,10 @@ class FillCanvasParser extends Parser with CanvasRequired {
 			i1 = ss(0).toInt
 			i2 = ss(1).toInt
 			colour = ss(2).head
+			Right(new ParseArguments(Array(i1,i2),Some(colour)))
 		}
 		catch {
-			case _ => return Left(InputParser.ParsingError)
+			case _ => Left(false)
 		}
-
-		Right(new FillCanvas(i1, i2, colour, canvas.get))
 	}
-
-	def ParserType(t: String): Boolean = t == "B"
 }

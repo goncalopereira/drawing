@@ -25,7 +25,7 @@ class InputParser(availableParsers: List[Parser]) {
 		val args = input.split(Separator)
 
 		availableParsers
-			.filter(p => p.Use(args, canvas))
+			.filter(p => p.Use(args))
 			.map(p => p.Execute(args.tail, canvas))
 			.headOption
 	}

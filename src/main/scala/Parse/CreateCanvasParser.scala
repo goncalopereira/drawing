@@ -1,28 +1,14 @@
 package Parse
 
 import Canvas.Canvas
-import Commands.CreateCanvas
+import Commands.{Command, CreateCanvas}
 
-class CreateCanvasParser extends Parser with CanvasNotRequired {
-
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, CreateCanvas] = {
-		if (!ValidCanvas(canvas))
-			return Left(InputParser.RequireCanvas)
-
-		if (ss.length != 2)
-			return Left(InputParser.WrongNumberOfArguments)
-
-		var i: Array[Int] = Array[Int]()
-
-		try {
-			i = ss.map(_.toInt)
-		}
-		catch {
-			case _ => return Left(InputParser.ParsingError)
-		}
-
-		Right(new CreateCanvas(i(0), i(1)))
-	}
+class CreateCanvasParser extends Parser with CanvasNotRequired with OnlyIntArguments {
 
 	def ParserType(t: String): Boolean = t == "C"
+
+	protected def CorrectNumberOfArguments(i: Int): Boolean = i == 2
+
+	protected def CreateCommand(parsed: ParseArguments,canvas: Option[Canvas]): Command =
+		new CreateCanvas(parsed.is(0),parsed.is(1))
 }
