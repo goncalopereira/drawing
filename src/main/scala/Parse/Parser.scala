@@ -21,9 +21,8 @@ trait Parser {
 		if (!ValidCanvas(canvas))
 			return Left(InputParser.RequireCanvas)
 
-		if (!CorrectNumberOfArguments(ss.length)) {
+		if (!CorrectNumberOfArguments(ss.length))
 			return Left(InputParser.WrongNumberOfArguments)
-		}
 
 		val parsing: Either[Boolean, ParseArguments] = Parse(ss)
 

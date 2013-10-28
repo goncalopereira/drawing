@@ -1,11 +1,12 @@
 import Canvas.Canvas
 import Commands._
+import IO._
 import Parse.InputParser
 
-/*
-	Only App does IO (read line, print) - These could be moved to an IO package
- */
-object App {
+object App extends IO with Console {
+
+	private val EnterCommand = "\nenter command: "
+	private val CommandNotFound = "Command not found"
 
 	def main(args: Array[String]) {
 
@@ -16,19 +17,20 @@ object App {
 		val parser = new InputParser(InputParser.Parsers)
 
 		do {
-			val input = Console.readLine("\nenter command: ")
+			val input = Read(EnterCommand)
 
 			command = parser(input, canvas)
 
 			command match {
-				case None => println("Command not found")
+				case None => Print(CommandNotFound)
 
-				case Some(Left(s)) => println(s)
+				case Some(Left(s)) => Print(s)
 
 				case Some(Right(_: Quit)) => running = false
+
 				case Some(Right(c)) => {
 					canvas = c.Execute()
-					print(canvas.get)
+					Print(canvas.get.toString())
 				}
 			}
 
