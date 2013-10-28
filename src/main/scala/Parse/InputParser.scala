@@ -17,7 +17,6 @@ class InputParser {
 	val QuitArgument = "Q"
 
 	private def CreateCanvas(ss: Array[String]): Option[Command] = {
-
 		if (ss.length != 2)
 			return None
 
