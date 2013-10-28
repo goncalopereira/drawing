@@ -23,16 +23,16 @@ class CanvasTests extends Specification {
 				canvas(1, 1) mustEqual None
 			}
 			"Print correctly" in {
-				canvas.toString mustEqual """----------
-				                            |        |
-				                            |        |
-				                            |        |
-				                            |        |
-				                            |        |
-				                            |        |
-				                            |        |
+				canvas.toString mustEqual	"""----------
+|        |
+|        |
+|        |
+|        |
+|        |
+|        |
+|        |
 ----------
-				                          """
+"""
 			}
 		}
 
