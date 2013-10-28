@@ -46,6 +46,8 @@ class CanvasTests extends Specification {
         "Not allow to update borders" in {
           updateCanvas(0,0) = 'x'
           updateCanvas(0,0) mustEqual Some('-')
+          updateCanvas(width,height) = 'x'
+          updateCanvas(width+1,height+1) mustEqual Some('-')
         }
       }
     }  
