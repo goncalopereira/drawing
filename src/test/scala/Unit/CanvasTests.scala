@@ -28,17 +28,27 @@ class CanvasTests extends Specification {
 		}
 
 		"When updating a Canvas" in {
-			val updateCanvas = new Canvas(width, height)
 
 			"Update correctly in matrix" in {
+				val updateCanvas = new Canvas(width, height)
 				updateCanvas(1, 1) = 'x'
 				updateCanvas(1, 1) mustEqual Some('x')
 			}
 			"Not allow to update borders" in {
+				val updateCanvas = new Canvas(width, height)
 				updateCanvas(0, 0) = 'x'
 				updateCanvas(0, 0) mustEqual Some('-')
 				updateCanvas(width, height) = 'x'
 				updateCanvas(width + 1, height + 1) mustEqual Some('-')
+			}
+
+			"Be able to re-update" in {
+				val updateCanvas = new Canvas(width, height)
+				updateCanvas(1, 1) = 'x'
+				updateCanvas(1, 1) mustEqual Some('x')
+				updateCanvas(1, 1) = 'c'
+				updateCanvas(1, 1) mustEqual Some('c')
+
 			}
 		}
 	}
