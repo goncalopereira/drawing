@@ -23,6 +23,7 @@ class InputParser(availableParsers: List[Parser]) {
 		availableParsers
 			.filter(p => p.ValidCanvas(canvas) && p.ParserType(args(0).head))
 			.map(p => p.Execute(args.tail,canvas))
-			.head
+			.flatten
+			.headOption
 	}
 }
