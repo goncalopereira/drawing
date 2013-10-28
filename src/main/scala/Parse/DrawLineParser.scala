@@ -21,5 +21,5 @@ class DrawLineParser extends Parser with CanvasRequired {
 		Some(new DrawLine(i(0), i(1), i(2), i(3), canvas.get))
 	}
 
-	def ParserType(t: Char): Boolean = t == 'L'
+	def ParserType(t: String): Boolean = t == "L"
 }

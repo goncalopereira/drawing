@@ -20,5 +20,5 @@ class CreateCanvasParser extends Parser with CanvasNotRequired {
 		Some(new CreateCanvas(i(0), i(1)))
 	}
 
-	def ParserType(t: Char): Boolean = t == 'C'
+	def ParserType(t: String): Boolean = t == "C"
 }

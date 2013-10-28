@@ -23,5 +23,5 @@ class FillCanvasParser extends Parser with CanvasRequired {
 		Some(new FillCanvas(i1, i2, colour, canvas.get))
 	}
 
-	def ParserType(t: Char): Boolean = t == 'B'
+	def ParserType(t: String): Boolean = t == "B"
 }

@@ -21,5 +21,5 @@ class DrawRectangleParser extends Parser with CanvasRequired {
 		Some(new DrawRectangle(i(0), i(1), i(2), i(3), canvas.get))
 	}
 
-	def ParserType(t: Char): Boolean = t == 'R'
+	def ParserType(t: String): Boolean = t == "R"
 }

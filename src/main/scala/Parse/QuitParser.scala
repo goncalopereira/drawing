@@ -4,7 +4,7 @@ import Canvas.Canvas
 import Commands.Quit
 
 class QuitParser extends Parser with CanvasNotRequired {
-	def ParserType(t: Char): Boolean = t == 'Q'
+	def ParserType(t: String): Boolean = t == "Q"
 	override def ValidCanvas(canvas: Option[Canvas]) = true
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[Quit] = Some(new Quit())
 }
