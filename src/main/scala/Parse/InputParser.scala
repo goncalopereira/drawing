@@ -21,8 +21,14 @@ class InputParser {
 		if (ss.length != 2)
 			return None
 
-		val i = ss.map(_.toInt)
+		var i: Array[Int] = Array[Int]()
 
+		try {
+			i = ss.map(_.toInt)
+		}
+		catch {
+			case _ => return None
+		}
 		Some(new CreateCanvas(i(0), i(1)))
 	}
 
@@ -30,7 +36,14 @@ class InputParser {
 		if (ss.length != 4)
 			return None
 
-		val i = ss.map(_.toInt)
+		var i: Array[Int] = Array[Int]()
+
+		try {
+			i = ss.map(_.toInt)
+		}
+		catch {
+			case _ => return None
+		}
 
 		Some(new DrawLine(i(0), i(1), i(2), i(3), canvas))
 	}
@@ -39,7 +52,14 @@ class InputParser {
 		if (ss.length != 4)
 			return None
 
-		val i = ss.map(_.toInt)
+		var i: Array[Int] = Array[Int]()
+
+		try {
+			i = ss.map(_.toInt)
+		}
+		catch {
+			case _ => return None
+		}
 
 		Some(new DrawRectangle(i(0), i(1), i(2), i(3), canvas))
 	}
@@ -48,9 +68,17 @@ class InputParser {
 		if (ss.length != 3)
 			return None
 
-		val i1 = ss(0).toInt
-		val i2 = ss(1).toInt
-		val colour = ss(2).head
+		var i1, i2 = 0
+		var colour: Char = ' '
+
+		try {
+			i1 = ss(0).toInt
+			i2 = ss(1).toInt
+			colour = ss(2).head
+		}
+		catch {
+			case _ => return None
+		}
 
 		Some(new FillCanvas(i1, i2, colour, canvas))
 	}

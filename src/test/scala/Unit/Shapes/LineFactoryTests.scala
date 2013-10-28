@@ -1,4 +1,4 @@
-package test.unit
+package test.scala.Unit.Shapes
 
 import org.specs2.mutable.Specification
 import Shapes.LineFactory
