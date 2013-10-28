@@ -1,4 +1,4 @@
-package Convert
+package IO
 
 object Output {
 	val EmptyChar = ' '

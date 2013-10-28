@@ -1,6 +1,6 @@
 package Canvas
 
-import Convert.Output
+import IO.Output
 
 /*
 	Protecting direct access to Matrix (Open/Close)

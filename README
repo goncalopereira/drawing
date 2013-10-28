@@ -25,6 +25,6 @@ Bundled from https://github.com/sbt/sbt-assembly
 $ sbt assembly
 
 RUN PACKAGE WITH SCALA/JVM:
-$ scala target/scala-2.9.3/Drawing-assembly-1.0.jar 
+$ scala target/scala-2.9.3/main.scala.Drawing-assembly-1.0.jar
 or...
-$ java -jar target/scala-2.9.3/Drawing-assembly-1.0.jar 
+$ java -jar target/scala-2.9.3/main.scala.Drawing-assembly-1.0.jar

@@ -1,4 +1,4 @@
-name := "Drawing"
+name := "main.scala.Drawing"
 
 version := "1.0"
 
