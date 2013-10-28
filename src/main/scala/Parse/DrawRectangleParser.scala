@@ -3,7 +3,7 @@ package Parse
 import Canvas.Canvas
 import Commands.DrawRectangle
 
-class DrawRectangleParser extends Parser {
+class DrawRectangleParser extends Parser with CanvasRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[DrawRectangle] = {
 		if (ss.length != 4)

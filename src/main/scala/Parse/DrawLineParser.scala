@@ -3,7 +3,7 @@ package Parse
 import Canvas.Canvas
 import Commands.DrawLine
 
-class DrawLineParser extends Parser {
+class DrawLineParser extends Parser with CanvasRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[DrawLine] = {
 		if (ss.length != 4)

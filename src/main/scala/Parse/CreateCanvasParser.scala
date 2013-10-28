@@ -3,9 +3,7 @@ package Parse
 import Canvas.Canvas
 import Commands.CreateCanvas
 
-class CreateCanvasParser extends Parser  {
-
-	override def ValidCanvas(canvas: Option[Canvas]) = true
+class CreateCanvasParser extends Parser with CanvasNotRequired {
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[CreateCanvas] = {
 		if (ss.length != 2)

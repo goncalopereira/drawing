@@ -3,7 +3,7 @@ package Parse
 import Canvas.Canvas
 import Commands.FillCanvas
 
-class FillCanvasParser extends Parser {
+class FillCanvasParser extends Parser with CanvasRequired {
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[FillCanvas] = {
 		if (ss.length != 3)
 			return None
