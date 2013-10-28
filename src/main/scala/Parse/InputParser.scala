@@ -10,20 +10,22 @@ object InputParser {
 			new DrawRectangleParser(),
 			new DrawLineParser(),
 			new CreateCanvasParser())
+
+   val ParsingError = "Parsing error"
+   val WrongNumberOfArguments = "Wrong number of Arguments" 
 }
 
 class InputParser(availableParsers: List[Parser]) {
 
 	private val Separator = ' '
 
-	def apply(input: String, canvas: Option[Canvas]): Option[Command] = {
+	def apply(input: String, canvas: Option[Canvas]): Option[Either[String,Command]] = {
 
 		val args = input.split(Separator)
      
-		availableParsers
-			.filter(p => p.Use(args,canvas))
-			.map(p => p.Execute(args.tail,canvas))
-			.flatten
-			.headOption
+    availableParsers
+      .filter(p => p.Use(args,canvas))
+      .map(p => p.Execute(args.tail,canvas))
+      .headOption
 	}
 }

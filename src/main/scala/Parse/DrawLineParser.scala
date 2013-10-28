@@ -5,9 +5,9 @@ import Commands.DrawLine
 
 class DrawLineParser extends Parser with CanvasRequired {
 
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[DrawLine] = {
+	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String,DrawLine] = {
 		if (ss.length != 4)
-			return None
+			return Left(InputParser.WrongNumberOfArguments)
 
 		var i: Array[Int] = Array[Int]()
 
@@ -15,10 +15,10 @@ class DrawLineParser extends Parser with CanvasRequired {
 			i = ss.map(_.toInt)
 		}
 		catch {
-			case _ => return None
+			case e => return Left(InputParser.ParsingError)
 		}
 
-		Some(new DrawLine(i(0), i(1), i(2), i(3), canvas.get))
+		Right(new DrawLine(i(0), i(1), i(2), i(3), canvas.get))
 	}
 
 	def ParserType(t: String): Boolean = t == "L"

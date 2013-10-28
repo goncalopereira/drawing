@@ -34,15 +34,17 @@ class InputParserTests extends Specification {
       val results = parser(validCreate,None)
       
       "Return correct command" in {
-        results must beSome[Command]
+        results must beSome[Either[String,Command]]
+        results.get.isRight mustEqual true
       }
     }
 
     "When unparsable create command" in {
         val results = parser(unparsableCreate,None)
         
-        "Return none" in {
-          results must beNone
+        "Return error" in {
+          results must beSome[Either[String,Command]]
+          results.get.isLeft mustEqual true
         }
      }
 

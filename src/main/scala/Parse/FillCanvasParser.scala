@@ -4,9 +4,9 @@ import Canvas.Canvas
 import Commands.FillCanvas
 
 class FillCanvasParser extends Parser with CanvasRequired {
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Option[FillCanvas] = {
+	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String,FillCanvas] = {
 		if (ss.length != 3)
-			return None
+			return Left(InputParser.WrongNumberOfArguments)
 
 		var i1, i2 = 0
 		var colour: Char = ' '
@@ -17,10 +17,10 @@ class FillCanvasParser extends Parser with CanvasRequired {
 			colour = ss(2).head
 		}
 		catch {
-			case _ => return None
+			case _ => return Left(InputParser.ParsingError)
 		}
 
-		Some(new FillCanvas(i1, i2, colour, canvas.get))
+		Right(new FillCanvas(i1, i2, colour, canvas.get))
 	}
 
 	def ParserType(t: String): Boolean = t == "B"
