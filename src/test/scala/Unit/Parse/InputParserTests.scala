@@ -1,7 +1,7 @@
 package test.scala.Unit.Parse
 
 import Canvas.Canvas
-import Commands.{Command, CreateCanvas}
+import Commands.{DrawLine, Command, CreateCanvas}
 import org.specs2.mutable.Specification
 import Parse.InputParser
 
@@ -60,4 +60,26 @@ class InputParserTests extends Specification {
 		}
 	}
 
+	"String with valid Line command" should {
+
+		val c = "L 1 2 1 4"
+
+		"When parsed with no canvas" in {
+			val results = parser(c,None)
+
+			"Return none" in {
+				results must beNone
+			}
+
+			"When parsed with valid canvas" in {
+				val canvas = Some(new Canvas(10,10))
+				val results = parser(c,canvas)
+
+				"Return Line command" in {
+					results must beSome[Command]
+					results.get must beAnInstanceOf[DrawLine]
+				}
+			}
+		}
+	}
 }
