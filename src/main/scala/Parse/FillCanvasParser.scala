@@ -4,7 +4,7 @@ import Canvas.Canvas
 import Commands.FillCanvas
 
 class FillCanvasParser extends Parser with CanvasRequired {
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String,FillCanvas] = {
+	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, FillCanvas] = {
 		if (ss.length != 3)
 			return Left(InputParser.WrongNumberOfArguments)
 

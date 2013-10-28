@@ -9,7 +9,7 @@ object App {
 
 	def main(args: Array[String]) {
 
-		var command: Option[Either[String,Command]] = None
+		var command: Option[Either[String, Command]] = None
 		var canvas: Option[Canvas] = None
 		var running = true
 
@@ -19,20 +19,19 @@ object App {
 			val input = Console.readLine("\nenter command: ")
 
 			command = parser(input, canvas)
-       
-			command match {
-        case None => println("Command not found")
-        
-        case Some(Left(s)) => println(s)
 
-        case Some(Right(_: Quit)) => running = false 
-        case Some(Right(c)) => 
-          {
-            canvas = c.Execute()
-            print(canvas.get)               
-          }
+			command match {
+				case None => println("Command not found")
+
+				case Some(Left(s)) => println(s)
+
+				case Some(Right(_: Quit)) => running = false
+				case Some(Right(c)) => {
+					canvas = c.Execute()
+					print(canvas.get)
+				}
 			}
-			
+
 		} while (running)
 	}
 }

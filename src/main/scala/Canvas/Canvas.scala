@@ -32,29 +32,32 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	}
 
 	def length: Int = values.length
-  
-  private def internalPosition(x: Int, y: Int): Boolean = {     
-    return (x >= 1 && y >= 1 && x <= width && y <= height)
-  }
+
+	private def internalPosition(x: Int, y: Int): Boolean = {
+		return (x >= 1 && y >= 1 && x <= width && y <= height)
+	}
+
 	def apply(width: Int, height: Int): Option[Char] = {
-    
-    if (width >= 0 && height >= 0 && width <= widthWithBorder && height <= heightWithBorder) {
-      return values(height)(width)
-    } 
-    else None
-  }
+
+		if (width >= 0 && height >= 0 && width <= widthWithBorder && height <= heightWithBorder) {
+			return values(height)(width)
+		}
+		else None
+	}
 
 	def apply(row: Int): Array[Option[Char]] = return values(row)
 
-	def update(width: Int, height: Int, value: Char) { update(List((width,height)),value) }
+	def update(width: Int, height: Int, value: Char) {
+		update(List((width, height)), value)
+	}
 
-	def update(points: Seq[(Int, Int)], value: Char) { 
-    val filtered = points.filter(p => internalPosition(p._1,p._2))
+	def update(points: Seq[(Int, Int)], value: Char) {
+		val filtered = points.filter(p => internalPosition(p._1, p._2))
 
-    filtered.foreach {
-		  case (width, height) => values(height)(width) = Some(value)
-	  }
-  }
+		filtered.foreach {
+			case (width, height) => values(height)(width) = Some(value)
+		}
+	}
 
 	def iterator: Iterator[Array[Option[Char]]] = return values.iterator
 

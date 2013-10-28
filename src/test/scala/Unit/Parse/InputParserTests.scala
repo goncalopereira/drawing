@@ -1,7 +1,7 @@
 package test.scala.Unit.Parse
 
 import Canvas.Canvas
-import Commands.{DrawLine, Command, CreateCanvas}
+import Commands.Command
 import org.specs2.mutable.Specification
 import Parse._
 
@@ -9,13 +9,13 @@ class InputParserTests extends Specification {
 
 	"Given no parsers" should {
 
-	  val parser = new InputParser(List[Parser]())
+		val parser = new InputParser(List[Parser]())
 		val unknown = "X 1 2 3"
-		val canvas = new Canvas(5,5)
+		val canvas = new Canvas(5, 5)
 
 		"When string parsed" in {
 
-			val results = parser(unknown,Some(canvas))
+			val results = parser(unknown, Some(canvas))
 
 			"Return none" in {
 				results must beNone
@@ -23,48 +23,48 @@ class InputParserTests extends Specification {
 		}
 	}
 
-  "Given CreateCanvas parser" should {
-    val parser = new InputParser(List(new CreateCanvasParser()))
-    
-    val validCreate = "C 5 5"
-    val unparsableCreate = "C a 5"
-    val wrongCommand = "L 1 1 1 2"
+	"Given CreateCanvas parser" should {
+		val parser = new InputParser(List(new CreateCanvasParser()))
 
-    "When valid string parsed" in {
-      val results = parser(validCreate,None)
-      
-      "Return correct command" in {
-        results must beSome[Either[String,Command]]
-        results.get.isRight mustEqual true
-      }
-    }
+		val validCreate = "C 5 5"
+		val unparsableCreate = "C a 5"
+		val wrongCommand = "L 1 1 1 2"
 
-    "When unparsable create command" in {
-        val results = parser(unparsableCreate,None)
-        
-        "Return error" in {
-          results must beSome[Either[String,Command]]
-          results.get.isLeft mustEqual true
-        }
-     }
+		"When valid string parsed" in {
+			val results = parser(validCreate, None)
 
-     "When sent wrong valid command" in {
-        val results = parser(wrongCommand,None)
-        
-        "Return none" in {
-          results must beNone
-        }
-      }
+			"Return correct command" in {
+				results must beSome[Either[String, Command]]
+				results.get.isRight mustEqual true
+			}
+		}
 
-      "When sent empty string" in {
-        val results = parser("",None)
-        
-        "Return none" in {
-          results must beNone
-        }
-      }
-      
-    }
-    
-   
+		"When unparsable create command" in {
+			val results = parser(unparsableCreate, None)
+
+			"Return error" in {
+				results must beSome[Either[String, Command]]
+				results.get.isLeft mustEqual true
+			}
+		}
+
+		"When sent wrong valid command" in {
+			val results = parser(wrongCommand, None)
+
+			"Return none" in {
+				results must beNone
+			}
+		}
+
+		"When sent empty string" in {
+			val results = parser("", None)
+
+			"Return none" in {
+				results must beNone
+			}
+		}
+
+	}
+
+
 }

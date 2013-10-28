@@ -5,7 +5,7 @@ import Commands.CreateCanvas
 
 class CreateCanvasParser extends Parser with CanvasNotRequired {
 
-	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String,CreateCanvas] = {
+	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, CreateCanvas] = {
 		if (ss.length != 2)
 			return Left(InputParser.WrongNumberOfArguments)
 
@@ -17,8 +17,8 @@ class CreateCanvasParser extends Parser with CanvasNotRequired {
 		catch {
 			case _ => return Left(InputParser.ParsingError)
 		}
-  
-   	Right(new CreateCanvas(i(0), i(1)))
+
+		Right(new CreateCanvas(i(0), i(1)))
 	}
 
 	def ParserType(t: String): Boolean = t == "C"

@@ -4,28 +4,28 @@ import Canvas.Canvas
 import Commands.Command
 
 object InputParser {
-	  val Parsers = List(
-			new QuitParser(),
-			new FillCanvasParser(),
-			new DrawRectangleParser(),
-			new DrawLineParser(),
-			new CreateCanvasParser())
+	val Parsers = List(
+		new QuitParser(),
+		new FillCanvasParser(),
+		new DrawRectangleParser(),
+		new DrawLineParser(),
+		new CreateCanvasParser())
 
-   val ParsingError = "Parsing error"
-   val WrongNumberOfArguments = "Wrong number of Arguments" 
+	val ParsingError = "Parsing error"
+	val WrongNumberOfArguments = "Wrong number of Arguments"
 }
 
 class InputParser(availableParsers: List[Parser]) {
 
 	private val Separator = ' '
 
-	def apply(input: String, canvas: Option[Canvas]): Option[Either[String,Command]] = {
+	def apply(input: String, canvas: Option[Canvas]): Option[Either[String, Command]] = {
 
 		val args = input.split(Separator)
-     
-    availableParsers
-      .filter(p => p.Use(args,canvas))
-      .map(p => p.Execute(args.tail,canvas))
-      .headOption
+
+		availableParsers
+			.filter(p => p.Use(args, canvas))
+			.map(p => p.Execute(args.tail, canvas))
+			.headOption
 	}
 }
