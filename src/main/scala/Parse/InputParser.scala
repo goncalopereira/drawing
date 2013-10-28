@@ -21,8 +21,8 @@ class InputParser(availableParsers: List[Parser]) {
 		val args = input.split(Separator)
 
 		availableParsers
-			.find(p => p.ValidCanvas(canvas) && p.ParserType(args(0).head))
-		   .getOrElse(new NoResultParser)
-				.Execute(args.tail,canvas)
+			.filter(p => p.ValidCanvas(canvas) && p.ParserType(args(0).head))
+			.map(p => p.Execute(args.tail,canvas))
+			.head
 	}
 }
