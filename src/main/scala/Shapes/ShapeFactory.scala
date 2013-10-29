@@ -2,7 +2,7 @@ package Shapes
 
 object ShapeFactory {
 
-	def Line(x: Int, y: Int, x2: Int, y2: Int) = { 
+	def Line(x: Int, y: Int, x2: Int, y2: Int) = {
 		(x, y, x2, y2) match {
 			case (`x`, _, `x`, _) => (y to y2).map {
 				case v => (x, v)
@@ -13,9 +13,9 @@ object ShapeFactory {
 			case _ => Seq[(Int, Int)]()
 		}
 	}
-    
-	def Rectangle(x: Int, y: Int, x2: Int, y2: Int): Seq[(Int,Int)] = {
-	
+
+	def Rectangle(x: Int, y: Int, x2: Int, y2: Int): Seq[(Int, Int)] = {
+
 
 		if (x == x2 || y == y2)
 			return Seq[(Int, Int)]()
@@ -28,6 +28,6 @@ object ShapeFactory {
 
 		all.distinct
 	}
-  
+
 }
 

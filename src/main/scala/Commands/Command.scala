@@ -3,11 +3,11 @@ package Commands
 abstract class Command {}
 
 trait Update[T] {
-  def Execute() 
+	def Execute()
 }
 
 trait Create[T] {
-  def Execute(): T
+	def Execute(): T
 }
 
 abstract class ControlCommand extends Command {}
