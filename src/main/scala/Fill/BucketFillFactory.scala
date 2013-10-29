@@ -25,6 +25,7 @@ object BucketFillFactory {
 		var toColour = List[(Int, Int)]()
 
 		do {
+
 			val point = next.head
 			next = next.tail
 
@@ -48,7 +49,9 @@ object BucketFillFactory {
 
 			val sides = List((point._1 - 1, point._2), (point._1 + 1, point._2), (point._1, point._2 + 1), (point._1, point._2 - 1))
 
-			Some(sides.filterNot(p => toColour.contains(p)))
+			Some(sides
+				.filterNot(p => toColour.contains(p))
+				.filterNot(p => next.contains(p)))
 		} else {
 			None
 		}
