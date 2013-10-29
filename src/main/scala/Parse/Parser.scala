@@ -6,7 +6,7 @@ import Commands.Command
 /*
 hides details like argument, required to have canvas...
  */
-trait Parser {
+abstract class Parser {
 	def ValidCanvas(canvas: Option[Canvas]): Boolean
 
 	def ParserType(t: String): Boolean

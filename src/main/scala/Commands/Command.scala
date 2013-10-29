@@ -2,6 +2,6 @@ package Commands
 
 import Canvas.Canvas
 
-trait Command {
+abstract class Command {
 	def Execute(): Option[Canvas]
 }
