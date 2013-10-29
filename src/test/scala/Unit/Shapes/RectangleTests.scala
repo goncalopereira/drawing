@@ -1,9 +1,9 @@
 package Unit.Shapes
 
 import org.specs2.mutable.Specification
-import Shapes.RectangleFactory
+import Shapes.ShapeFactory
 
-class RectangleFactoryTests extends Specification {
+class RectangleTests extends Specification {
 
 	"Two points on same horizontal line" should {
 		val x = 1
@@ -12,7 +12,7 @@ class RectangleFactoryTests extends Specification {
 
 		"When building a rectangle" in {
 
-			var results = RectangleFactory(x, y, x, y2)
+			var results = ShapeFactory.Rectangle(x, y, x, y2)
 
 			"Then return no results" in {
 				results must have size (0)
@@ -27,7 +27,7 @@ class RectangleFactoryTests extends Specification {
 
 		"When building a rectangle" in {
 
-			var results = RectangleFactory(x, y, x2, y)
+			var results = ShapeFactory.Rectangle(x, y, x2, y)
 
 			"Return no results" in {
 				results must have size (0)
@@ -42,7 +42,7 @@ class RectangleFactoryTests extends Specification {
 		val y2 = 3
 
 		"When building a rectangle" in {
-			var results = RectangleFactory(x, y, x2, y2)
+			var results = ShapeFactory.Rectangle(x, y, x2, y2)
 
 			"Return correct number of points" in {
 				results must have size (4)

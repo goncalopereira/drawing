@@ -1,9 +1,9 @@
 package test.scala.Unit.Shapes
 
 import org.specs2.mutable.Specification
-import Shapes.LineFactory
+import Shapes.ShapeFactory
 
-class LineFactoryTests extends Specification {
+class LineTests extends Specification {
 
 	"Two points not on same line" should {
 		val x = 1
@@ -12,7 +12,7 @@ class LineFactoryTests extends Specification {
 		val y2 = 3
 
 		"When building a line" in {
-			var results = LineFactory(x, y, x2, y2)
+			var results = ShapeFactory.Line(x, y, x2, y2)
 
 			"Return no results" in {
 				results must have size (0)
@@ -26,7 +26,7 @@ class LineFactoryTests extends Specification {
 		val y2 = 6
 
 		"When building a line" in {
-			var results = LineFactory(x, y, x, y2)
+			var results = ShapeFactory.Line(x, y, x, y2)
 
 			"Return correct number of points in line" in {
 				results must have size (4)
@@ -47,7 +47,7 @@ class LineFactoryTests extends Specification {
 		val y = 3
 
 		"When building a line" in {
-			var results = LineFactory(x, y, x2, y)
+			var results = ShapeFactory.Line(x, y, x2, y)
 
 			"Return correct number of points in line" in {
 				results must have size (4)
