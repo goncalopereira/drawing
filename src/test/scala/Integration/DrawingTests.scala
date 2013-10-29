@@ -4,6 +4,7 @@ import Drawing.Drawing
 import IO.IO
 import org.specs2.mutable.Specification
 import org.specs2.mock.Mockito
+import Parse.InputParserFactory
 
 class DrawingTests extends Specification with Mockito {
 
@@ -25,7 +26,7 @@ class DrawingTests extends Specification with Mockito {
 				.thenReturns("B 10 3 o")
 				.thenReturns("Q")
 
-			new Drawing(mockedIO)()
+			new Drawing(mockedIO,InputParserFactory.New)()
 
 			one(mockedIO).Print(screen1)
 			one(mockedIO).Print(screen2)

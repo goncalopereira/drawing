@@ -6,7 +6,7 @@ import IO.{Output, IO}
 import Parse.InputParser
 import scala.util.control.Breaks
 
-class Drawing(io: IO) {
+class Drawing(io: IO, parser: InputParser) {
 
 	private val EnterCommand = Output.NewLine + "enter command: "
 	private val CommandNotFound = "Command not found"
@@ -14,8 +14,6 @@ class Drawing(io: IO) {
 	def apply() {
 		var command: Option[Either[String, Command]] = None
 		var canvas: Option[Canvas] = None
-
-		val parser = new InputParser(InputParser.Parsers)
 
 		val loop = new Breaks;
 

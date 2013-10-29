@@ -56,4 +56,9 @@ trait OnlyIntArguments {
 	}
 }
 
+trait NoArguments {
+	def Parse(ss: Array[String]) = Right(ParseArguments(Array(), None))
+	def CorrectNumberOfArguments(i: Int): Boolean = true
+}
+
 case class ParseArguments(is: Array[Int], colour: Option[Char])
