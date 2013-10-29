@@ -13,5 +13,3 @@ trait Create[T] {
 }
 
 abstract class ControlCommand extends Command {}
-
-abstract class CanvasCommand extends Command {}
