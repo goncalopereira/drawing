@@ -42,7 +42,7 @@ class BucketFillFactoryTests extends Specification {
 		"When using bucket fill in any point" in {
 			"Fill all canvas" in {
 
-				val points = BucketFillFactory(1,1,colour,canvas)
+				val points = BucketFillFactory(1,1,canvas)
 
 				canvas(points) = colour
 
@@ -54,7 +54,7 @@ class BucketFillFactoryTests extends Specification {
 			"Be able to re-fill all" in {
 				val canvas = new Canvas(5,5)
 
-				val points = BucketFillFactory(1,1,colour2,canvas)
+				val points = BucketFillFactory(1,1,canvas)
 
 				canvas(points) = colour2
 
@@ -75,7 +75,7 @@ class BucketFillFactoryTests extends Specification {
 
 			canvas(lines) = colour
 
-			val points = BucketFillFactory(3,3,colour2,canvas)
+			val points = BucketFillFactory(3,3,canvas)
 
 			canvas(points) = colour2
 

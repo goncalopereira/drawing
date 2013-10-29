@@ -16,7 +16,7 @@ Flood-fill (node, target-color, replacement-color):
  */
 object BucketFillFactory {
 
-	def apply(x: Int, y: Int, colour: Char, canvas: Canvas): Seq[(Int, Int)] = {
+	def apply(x: Int, y: Int, canvas: Canvas): Seq[(Int, Int)] = {
 
 		var next: List[(Int, Int)] = List((x,y))
 
@@ -28,10 +28,8 @@ object BucketFillFactory {
       val point = next.head
       next = next.tail
      
-  //    println(point,targetColour,next,toColour) 
       val results  =  Step(point, targetColour, canvas, next, toColour)
 
-//      println("results",next)
       if (!results.isEmpty) {
          toColour = toColour :+ point
 
