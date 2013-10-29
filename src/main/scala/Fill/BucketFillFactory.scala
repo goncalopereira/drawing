@@ -28,10 +28,10 @@ object BucketFillFactory {
       val point = next.head
       next = next.tail
      
-      println(point,targetColour,next,toColour) 
+  //    println(point,targetColour,next,toColour) 
       val results  =  Step(point, targetColour, canvas, next, toColour)
 
-      println("results",next)
+//      println("results",next)
       if (!results.isEmpty) {
          toColour = toColour :+ point
 

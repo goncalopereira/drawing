@@ -8,12 +8,39 @@ class BucketFillFactoryTests extends Specification {
 
 	val colour = 'c'
 	val colour2 = 'a'
+  
+  val targetColour = None 
+	val canvas = new Canvas(5,5)
+	
+  "Given a blank canvas" should {
 
-	"Given a blank canvas" should {
+    "When doing the first step to fill" in {
+      val results = BucketFillFactory.Step((1,1), targetColour, canvas, List(), List())
+      
+      "Return list of sides to go next" in {
+        results must beSome(List((0,1), (2,1), (1,2), (1,0)))
+      }
+    }
+
+    "When doing second step to fill" in {  
+      val results = BucketFillFactory.Step((0,1),targetColour, canvas, List((1,1)), List((2,1),(1,2),(1,0)))
+
+      "Return none as it is not part of the canvas" in {
+        results must beNone
+        }
+      }
+      
+      "When doing third step to fill" in {    
+       
+        val results = BucketFillFactory.Step((2,1),targetColour, canvas, List((1,1)), List((1,2),(1,0)))
+        
+        "Return list with more sides to go next" in {
+          results must beSome(List((1,1), (3,1), (2,2), (2,0)))
+        }
+      }
 
 		"When using bucket fill in any point" in {
 			"Fill all canvas" in {
-				val canvas = new Canvas(5,5)
 
 				val points = BucketFillFactory(1,1,colour,canvas)
 
