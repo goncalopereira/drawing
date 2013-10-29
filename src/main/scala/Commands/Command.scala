@@ -1,7 +1,5 @@
 package Commands
 
-import Canvas.Canvas
-
 abstract class Command {}
 
 trait Update[T] {

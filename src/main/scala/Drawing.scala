@@ -4,6 +4,7 @@ import Canvas.Canvas
 import Commands._
 import IO.{Output, IO}
 import Parse.InputParser
+import scala.util.control.Breaks
 
 class Drawing(io: IO) {
 
@@ -16,6 +17,9 @@ class Drawing(io: IO) {
 
 		val parser = new InputParser(InputParser.Parsers)
 
+		val loop = new Breaks;
+
+		loop.breakable {
 		do {
 			val input = io.Read(EnterCommand)
 
@@ -26,7 +30,7 @@ class Drawing(io: IO) {
 
 				case Some(Left(s)) => io.Print(s)
 
-				case Some(Right(_: Quit)) => return
+				case Some(Right(_: Quit)) => loop.break()
 
 				case Some(Right(c: Create[Canvas])) => {
 					canvas = Some(c.Execute())
@@ -40,6 +44,8 @@ class Drawing(io: IO) {
 			}
 
 		} while (true)
+			}
+
 	}
 
 }
