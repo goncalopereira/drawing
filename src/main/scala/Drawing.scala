@@ -1,7 +1,7 @@
 package Drawing
 
 import Canvas.Canvas
-import Commands.{Quit, Command}
+import Commands._
 import IO.{Output, IO}
 import Parse.InputParser
 
@@ -29,10 +29,15 @@ class Drawing(io: IO) {
 
 				case Some(Right(_: Quit)) => running = false
 
-				case Some(Right(c)) => {
-					canvas = c.Execute()
+				case Some(Right(c: Create[Canvas])) => {
+					canvas = Some(c.Execute())
 					io.Print(canvas.get.toString())
 				}
+
+        case Some(Right(c: Update[Canvas])) => {
+          c.Execute()
+          io.Print(canvas.get.toString())
+        }
 			}
 
 		} while (running)
