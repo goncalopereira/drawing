@@ -13,7 +13,6 @@ class Drawing(io: IO) {
 	def apply() {
 		var command: Option[Either[String, Command]] = None
 		var canvas: Option[Canvas] = None
-		var running = true
 
 		val parser = new InputParser(InputParser.Parsers)
 
@@ -27,7 +26,7 @@ class Drawing(io: IO) {
 
 				case Some(Left(s)) => io.Print(s)
 
-				case Some(Right(_: Quit)) => running = false
+				case Some(Right(_: Quit)) => return
 
 				case Some(Right(c: Create[Canvas])) => {
 					canvas = Some(c.Execute())
@@ -40,7 +39,7 @@ class Drawing(io: IO) {
         }
 			}
 
-		} while (running)
+		} while (true)
 	}
 
 }
