@@ -18,33 +18,43 @@ object BucketFillFactory {
 
 	def apply(x: Int, y: Int, colour: Char, canvas: Canvas): Seq[(Int, Int)] = {
 
-		var next = List((x,y))
+		var next: List[(Int, Int)] = List((x,y))
 
 		val targetColour = canvas(x,y)
 
-		val toColour = List[(Int,Int)]()
+		var toColour = List[(Int,Int)]()
 
 		do {
+      val point = next.head
+      next = next.tail
+     
+      println(point,targetColour,next,toColour) 
+      val results  =  Step(point, targetColour, canvas, next, toColour)
 
-			val point = next.head
-			next = next.tail
+      println("results",next)
+      if (!results.isEmpty) {
+         toColour = toColour :+ point
 
+         next = next ++ results.get
+      }
+      
+		} while (next.nonEmpty)
+
+			toColour
+		}
+
+  def Step(point: (Int,Int), targetColour: Option[Char], canvas: Canvas, next: Seq[(Int,Int)], toColour: Seq[(Int,Int)]): Option[Seq[(Int,Int)]] = {
+      
 			if (canvas.IsInternalPosition(point._1,point._2)
 				&& canvas(point._1, point._2) == targetColour) {
 
-				toColour :+ point
-
 				val sides = List((point._1-1,point._2),(point._1+1,point._2),(point._1,point._2+1),(point._1,point._2-1))
 
-				val n = sides.filterNot(p => toColour.contains(p))
-
-				next = next ++ n
-			}
-		} while (next.nonEmpty)
-
-			println("toColour",toColour)
-			toColour
-		}
+				Some(sides.filterNot(p => toColour.contains(p)))
+    } else {
+       None 
+    }
+  }
 
 }
 
