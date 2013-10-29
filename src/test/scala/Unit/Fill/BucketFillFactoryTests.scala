@@ -1,3 +1,5 @@
+package Unit.Fill
+
 import Canvas.Canvas
 import Fill.BucketFillFactory
 import org.specs2.mutable.Specification

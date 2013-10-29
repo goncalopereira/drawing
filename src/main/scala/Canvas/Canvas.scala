@@ -33,7 +33,7 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 
 	def length: Int = values.length
 
-	private def internalPosition(x: Int, y: Int): Boolean = {
+	def IsInternalPosition(x: Int, y: Int): Boolean = {
 		return (x >= 1 && y >= 1 && x <= width && y <= height)
 	}
 
@@ -52,7 +52,7 @@ class Canvas(private val width: Int, private val height: Int) extends Seq[Array[
 	}
 
 	def update(points: Seq[(Int, Int)], value: Char) {
-		val filtered = points.filter(p => internalPosition(p._1, p._2))
+		val filtered = points.filter(p => IsInternalPosition(p._1, p._2))
 
 		filtered.foreach {
 			case (width, height) => values(height)(width) = Some(value)
