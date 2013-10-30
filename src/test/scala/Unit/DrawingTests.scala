@@ -39,7 +39,7 @@ class DrawingTests extends Specification with Mockito {
     }
     
     "When finding a Update command" in {
-      case class mockUpdate extends Command with Update[Canvas] { def Execute() {} }
+      case class mockUpdate() extends Command with Update[Canvas] { def Execute() {} }
       val update = mock[mockUpdate]
       mockParserService(any[String],any[Option[Canvas]]) returns Some(Right(update)) thenReturns Some(Right(new Quit()))
       val drawing = new Drawing(mockIO, mockParserService)
@@ -54,7 +54,7 @@ class DrawingTests extends Specification with Mockito {
 
     "When finding a Create command" in {
       val canvas = new Canvas(5,5)
-      case class mockCreate extends Command with Create[Canvas] { def Execute(): Canvas = { return new Canvas(1,1) } }
+      case class mockCreate() extends Command with Create[Canvas] { def Execute(): Canvas = { return new Canvas(1,1) } }
       val create = mock[mockCreate]
       create.Execute() returns canvas
       mockParserService(any[String],any[Option[Canvas]]) returns Some(Right(create)) thenReturns Some(Right(new Quit()))
