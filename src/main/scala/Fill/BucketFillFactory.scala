@@ -31,7 +31,7 @@ object BucketFillFactory {
 
 			val results = Step(point, targetColour, canvas, next, toColour)
 
-			if (!results.isEmpty) {
+			if (results.nonEmpty) {
 				toColour = toColour :+ point
 
 				next = next ++ results.get
