@@ -14,7 +14,7 @@ Flood-fill (node, target-color, replacement-color):
     Perform Flood-fill (one step to the south of node, target-color, replacement-color).
  4. Return.
  */
-object BucketFillFactory {
+class BucketFillFactory {
 
 	def apply(x: Int, y: Int, canvas: Canvas): Seq[(Int, Int)] = {
 

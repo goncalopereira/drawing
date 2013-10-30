@@ -1,7 +1,9 @@
 package Registry
 
+import Fill.BucketFillFactory
 import IO.{ConsoleComponent, ConsoleServiceComponent}
 import Parse._
+import Shapes.ShapeFactory
 
 object Registry extends ConsoleServiceComponent with ConsoleComponent {
 	val console = new Console()
@@ -12,4 +14,7 @@ object Registry extends ConsoleServiceComponent with ConsoleComponent {
 		new DrawRectangleParser(),
 		new DrawLineParser(),
 		new CreateCanvasParser()))
+
+	var shapeService = new ShapeFactory()
+	var fillService = new BucketFillFactory()
 }

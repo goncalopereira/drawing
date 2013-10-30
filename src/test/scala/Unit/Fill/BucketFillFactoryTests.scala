@@ -6,6 +6,7 @@ import org.specs2.mutable.Specification
 
 class BucketFillFactoryTests extends Specification {
 
+	val service = new BucketFillFactory
 	val colour = 'c'
 	val colour2 = 'a'
 
@@ -16,7 +17,7 @@ class BucketFillFactoryTests extends Specification {
 
 		"When doing a step to a point to be coloured which has a side already to be coloured" in {
 
-			val results = BucketFillFactory.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0)))
+			val results = service.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0)))
 
 			"Return list with all sides except that" in {
 				results must beSome(List((3, 1), (2, 2), (2, 0)))
@@ -25,7 +26,7 @@ class BucketFillFactoryTests extends Specification {
 
 		"When doing a step to a point to be coloured which has a side already to on TODO" in {
 
-			val results = BucketFillFactory.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0), (2, 0)))
+			val results = service.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0), (2, 0)))
 
 			"Return list with all sides except that" in {
 				results must beSome(List((3, 1), (2, 2)))
@@ -33,7 +34,7 @@ class BucketFillFactoryTests extends Specification {
 		}
 
 		"When doing the first step to fill" in {
-			val results = BucketFillFactory.Step((1, 1), targetColour, canvas, List(), List())
+			val results = service.Step((1, 1), targetColour, canvas, List(), List())
 
 			"Return list of sides to go next" in {
 				results must beSome(List((0, 1), (2, 1), (1, 2), (1, 0)))
@@ -41,7 +42,7 @@ class BucketFillFactoryTests extends Specification {
 		}
 
 		"When doing second step to fill" in {
-			val results = BucketFillFactory.Step((0, 1), targetColour, canvas, List((1, 1)), List((2, 1), (1, 2), (1, 0)))
+			val results = service.Step((0, 1), targetColour, canvas, List((1, 1)), List((2, 1), (1, 2), (1, 0)))
 
 			"Return none as it is not part of the canvas" in {
 				results must beNone
@@ -50,7 +51,7 @@ class BucketFillFactoryTests extends Specification {
 
 		"When doing third step to fill" in {
 
-			val results = BucketFillFactory.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0)))
+			val results = service.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0)))
 
 			"Return list with more sides to go next" in {
 				results must beSome(List((3, 1), (2, 2), (2, 0)))
@@ -60,7 +61,7 @@ class BucketFillFactoryTests extends Specification {
 		"When using bucket fill in any point" in {
 			"Fill all canvas" in {
 
-				val points = BucketFillFactory(1, 1, canvas)
+				val points = service(1, 1, canvas)
 
 				canvas(points) = colour
 
@@ -72,7 +73,7 @@ class BucketFillFactoryTests extends Specification {
 			"Be able to re-fill all" in {
 				val canvas = new Canvas(5, 5)
 
-				val points = BucketFillFactory(1, 1, canvas)
+				val points = service(1, 1, canvas)
 
 				canvas(points) = colour2
 
@@ -93,7 +94,7 @@ class BucketFillFactoryTests extends Specification {
 
 			canvas(lines) = colour
 
-			val points = BucketFillFactory(3, 3, canvas)
+			val points = service(3, 3, canvas)
 
 			canvas(points) = colour2
 

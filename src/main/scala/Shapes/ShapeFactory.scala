@@ -1,6 +1,6 @@
 package Shapes
 
-object ShapeFactory {
+class ShapeFactory {
 
 	def Line(x: Int, y: Int, x2: Int, y2: Int) = {
 		(x, y, x2, y2) match {

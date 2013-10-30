@@ -5,6 +5,8 @@ import Shapes.ShapeFactory
 
 class RectangleTests extends Specification {
 
+	val service = new ShapeFactory
+
 	"Two points on same horizontal line" should {
 		val x = 1
 		val y = 2
@@ -12,7 +14,7 @@ class RectangleTests extends Specification {
 
 		"When building a rectangle" in {
 
-			var results = ShapeFactory.Rectangle(x, y, x, y2)
+			var results = service.Rectangle(x, y, x, y2)
 
 			"Then return no results" in {
 				results must have size (0)
@@ -27,7 +29,7 @@ class RectangleTests extends Specification {
 
 		"When building a rectangle" in {
 
-			var results = ShapeFactory.Rectangle(x, y, x2, y)
+			var results = service.Rectangle(x, y, x2, y)
 
 			"Return no results" in {
 				results must have size (0)
@@ -42,7 +44,7 @@ class RectangleTests extends Specification {
 		val y2 = 3
 
 		"When building a rectangle" in {
-			var results = ShapeFactory.Rectangle(x, y, x2, y2)
+			var results = service.Rectangle(x, y, x2, y2)
 
 			"Return correct number of points" in {
 				results must have size (4)
