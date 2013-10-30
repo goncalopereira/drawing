@@ -7,10 +7,14 @@ import Parse.ParserService
 import scala.util.control.Breaks
 import Registry.Registry
 
+object Drawing {
+
+	val EnterCommand = Output.NewLine + "enter command: "
+	val CommandNotFound = "Command not found"
+}
+
 class Drawing(io: Registry.ConsoleService = Registry.consoleService,
                parserService: ParserService = Registry.parserService) {
-	private val EnterCommand = Output.NewLine + "enter command: "
-	private val CommandNotFound = "Command not found"
 
 	def Run() {
 		var command: Option[Either[String, Command]] = None
@@ -20,12 +24,12 @@ class Drawing(io: Registry.ConsoleService = Registry.consoleService,
 
 		loop.breakable {
 			do {
-				val input = io.Read(EnterCommand)
+				val input = io.Read(Drawing.EnterCommand)
 
 				command = parserService(input, canvas)
 
 				command match {
-					case None => io.Print(CommandNotFound)
+					case None => io.Print(Drawing.CommandNotFound)
 					case Some(Left(s)) => io.Print(s)
 					case Some(Right(_: Quit)) => loop.break()
 					case Some(Right(c: Create[Canvas])) => {
