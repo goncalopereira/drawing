@@ -8,7 +8,7 @@ object ParserService {
 	val WrongNumberOfArguments = "Wrong number of Arguments"
 	val RequireCanvas = "Requires Canvas"
 
-	private val Separator = ' '
+	val Separator = ' '
 }
 
 class ParserService(availableParsers: List[Parser]) {
@@ -18,7 +18,7 @@ class ParserService(availableParsers: List[Parser]) {
 		val args = input.split(ParserService.Separator)
 
 		availableParsers
-			.filter(p => p.Use(args))
+			.filter(p => p.CanUse(args))
 			.map(p => p.Execute(args.tail, canvas))
 			.headOption
 	}

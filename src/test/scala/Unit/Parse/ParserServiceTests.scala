@@ -35,7 +35,7 @@ class ParserServiceTests extends Specification with Mockito {
 				val command = mock[Command]
 
 				p = mock[Parser]
-				p.Use(any[Array[String]]) returns true
+				p.CanUse(any[Array[String]]) returns true
 
 				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Right(command)
 
@@ -54,7 +54,7 @@ class ParserServiceTests extends Specification with Mockito {
 				var p = mock[Parser]
 
 				p = mock[Parser]
-				p.Use(any[Array[String]]) returns true
+				p.CanUse(any[Array[String]]) returns true
 				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Left("error")
 
 				val parser = new ParserService(List(p))
@@ -68,7 +68,7 @@ class ParserServiceTests extends Specification with Mockito {
 		"When sent wrong valid command" in {
 			var p = mock[Parser]
 			p = mock[Parser]
-			p.Use(any[Array[String]]) returns false
+			p.CanUse(any[Array[String]]) returns false
 
 			"Return none" in {
 				val parser = new ParserService(List(p))

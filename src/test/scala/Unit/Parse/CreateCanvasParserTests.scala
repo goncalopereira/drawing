@@ -24,7 +24,7 @@ class CreateCanvasParserTests extends Specification {
 			}
 
 			"Return correct use" in {
-				p.Use(s.split(" ")) mustEqual true
+				p.CanUse(s.split(" ")) mustEqual true
 			}
 		}
 	}

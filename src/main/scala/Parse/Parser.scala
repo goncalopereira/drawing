@@ -7,25 +7,23 @@ import Commands.Command
 hides details like argument, required to have canvas...
  */
 abstract class Parser {
-	def ValidCanvas(canvas: Option[Canvas]): Boolean
+	def IsInvalidCanvas(canvas: Option[Canvas]): Boolean
 
-	def ParserType(t: String): Boolean
-
-	def CorrectNumberOfArguments(i: Int): Boolean
+	def IsIncorrectNumberOfArguments(i: Int): Boolean
 
 	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command
 
-	def Parse(ss: Array[String]): Either[Boolean, ParseArguments]
+	def TryParse(ss: Array[String]): Either[Boolean, ParseArguments]
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
 
-		if (!ValidCanvas(canvas))
+		if (IsInvalidCanvas(canvas))
 			return Left(ParserService.RequireCanvas)
 
-		if (!CorrectNumberOfArguments(ss.length))
+		if (IsIncorrectNumberOfArguments(ss.length))
 			return Left(ParserService.WrongNumberOfArguments)
 
-		val parsing: Either[Boolean, ParseArguments] = Parse(ss)
+		val parsing: Either[Boolean, ParseArguments] = TryParse(ss)
 
 		if (parsing.isLeft)
 			return Left(ParserService.ParsingError)
@@ -33,19 +31,19 @@ abstract class Parser {
 		Right(CreateCommand(parsing.right.get, canvas))
 	}
 
-	def Use(ss: Array[String]) = ParserType(ss.head)
+	def CanUse(ss: Array[String]): Boolean
 }
 
 trait CanvasRequired {
-	def ValidCanvas(canvas: Option[Canvas]): Boolean = canvas.nonEmpty
+	def IsInvalidCanvas(canvas: Option[Canvas]): Boolean = canvas.isEmpty
 }
 
 trait CanvasNotRequired {
-	def ValidCanvas(canvas: Option[Canvas]): Boolean = true
+	def IsInvalidCanvas(canvas: Option[Canvas]): Boolean = false
 }
 
 trait OnlyIntArguments {
-	def Parse(ss: Array[String]): Either[Boolean, ParseArguments] = {
+	def TryParse(ss: Array[String]): Either[Boolean, ParseArguments] = {
 		try {
 			val i = ss.map(_.toInt)
 			Right(new ParseArguments(i, None))
@@ -57,9 +55,9 @@ trait OnlyIntArguments {
 }
 
 trait NoArguments {
-	def Parse(ss: Array[String]) = Right(ParseArguments(Array(), None))
+	def TryParse(ss: Array[String]) = Right(ParseArguments(Array(), None))
 
-	def CorrectNumberOfArguments(i: Int): Boolean = true
+	def IsIncorrectNumberOfArguments(i: Int): Boolean = false
 }
 
 case class ParseArguments(is: Array[Int], colour: Option[Char])

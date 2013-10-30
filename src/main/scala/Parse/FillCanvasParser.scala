@@ -5,14 +5,14 @@ import Commands.{Command, FillCanvas}
 
 class FillCanvasParser extends Parser with CanvasRequired {
 
-	def ParserType(t: String): Boolean = t == "B"
+	def CanUse(t: Array[String]): Boolean = t.head == "B"
 
-	def CorrectNumberOfArguments(i: Int): Boolean = i == 3
+	def IsIncorrectNumberOfArguments(i: Int): Boolean = i != 3
 
 	def CreateCommand(parsed: ParseArguments, canvas: Option[Canvas]): Command =
 		new FillCanvas(parsed.is(0), parsed.is(1), parsed.colour.get, canvas.get)
 
-	def Parse(ss: Array[String]) = {
+	def TryParse(ss: Array[String]) = {
 		var i1, i2 = 0
 		var colour: Char = ' '
 
