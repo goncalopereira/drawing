@@ -25,7 +25,7 @@ class DrawingTests extends Specification with Mockito {
 				.thenReturns("B 10 3 o")
 				.thenReturns("Q")
 
-			new Drawing(io = mockedIO,parser = Registry.parserService).Run()
+			new Drawing(mockedIO,Registry.parserService).Run()
 
 			one(mockedIO).Print(screen1)
 			one(mockedIO).Print(screen2)

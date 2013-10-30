@@ -3,18 +3,7 @@ package Parse
 import Canvas.Canvas
 import Commands.Command
 
-object InputParserFactory {
-	private val AllParsers = List(
-		new QuitParser(),
-		new FillCanvasParser(),
-		new DrawRectangleParser(),
-		new DrawLineParser(),
-		new CreateCanvasParser())
-
-	def New = new InputParser(AllParsers)
-}
-
-object InputParser {
+object ParserService {
 	val ParsingError = "Parsing error"
 	val WrongNumberOfArguments = "Wrong number of Arguments"
 	val RequireCanvas = "Requires Canvas"
@@ -22,11 +11,11 @@ object InputParser {
 	private val Separator = ' '
 }
 
-class InputParser(availableParsers: List[Parser]) {
+class ParserService(availableParsers: List[Parser]) {
 
 	def apply(input: String, canvas: Option[Canvas]): Option[Either[String, Command]] = {
 
-		val args = input.split(InputParser.Separator)
+		val args = input.split(ParserService.Separator)
 
 		availableParsers
 			.filter(p => p.Use(args))

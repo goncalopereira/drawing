@@ -20,15 +20,15 @@ abstract class Parser {
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
 
 		if (!ValidCanvas(canvas))
-			return Left(InputParser.RequireCanvas)
+			return Left(ParserService.RequireCanvas)
 
 		if (!CorrectNumberOfArguments(ss.length))
-			return Left(InputParser.WrongNumberOfArguments)
+			return Left(ParserService.WrongNumberOfArguments)
 
 		val parsing: Either[Boolean, ParseArguments] = Parse(ss)
 
 		if (parsing.isLeft)
-			return Left(InputParser.ParsingError)
+			return Left(ParserService.ParsingError)
 
 		Right(CreateCommand(parsing.right.get, canvas))
 	}

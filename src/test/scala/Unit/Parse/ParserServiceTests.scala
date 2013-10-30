@@ -7,11 +7,11 @@ import Parse._
 import org.specs2.mock.Mockito
 
 
-class InputParserTests extends Specification with Mockito {
+class ParserServiceTests extends Specification with Mockito {
 
 	"Given no parsers" should {
 
-		val parser = new InputParser(List[Parser]())
+		val parser = new ParserService(List[Parser]())
 		val unknown = "X 1 2 3"
 		val canvas = new Canvas(5, 5)
 
@@ -39,7 +39,7 @@ class InputParserTests extends Specification with Mockito {
 
 				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Right(command)
 
-				val parser = new InputParser(List(p))
+				val parser = new ParserService(List(p))
 				val results = parser("", None)
 
 				results must beSome[Either[String, Command]]
@@ -57,7 +57,7 @@ class InputParserTests extends Specification with Mockito {
 				p.Use(any[Array[String]]) returns true
 				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Left("error")
 
-				val parser = new InputParser(List(p))
+				val parser = new ParserService(List(p))
 				val results = parser("", None)
 
 				results must beSome[Either[String, Command]]
@@ -71,7 +71,7 @@ class InputParserTests extends Specification with Mockito {
 			p.Use(any[Array[String]]) returns false
 
 			"Return none" in {
-				val parser = new InputParser(List(p))
+				val parser = new ParserService(List(p))
 				val results = parser("", None)
 
 				results must beNone
