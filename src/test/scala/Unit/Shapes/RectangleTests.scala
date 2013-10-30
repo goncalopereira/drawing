@@ -4,17 +4,14 @@ import org.specs2.mutable.Specification
 import Shapes.ShapeFactory
 
 class RectangleTests extends Specification {
-
 	val service = new ShapeFactory
-
 	"Two points on same horizontal line" should {
 		val x = 1
 		val y = 2
 		val y2 = 3
 
 		"When building a rectangle" in {
-
-			var results = service.Rectangle(x, y, x, y2)
+			var results = service.Rectangle (x, y, x, y2)
 
 			"Then return no results" in {
 				results must have size (0)
@@ -28,8 +25,7 @@ class RectangleTests extends Specification {
 		val y = 3
 
 		"When building a rectangle" in {
-
-			var results = service.Rectangle(x, y, x2, y)
+			var results = service.Rectangle (x, y, x2, y)
 
 			"Return no results" in {
 				results must have size (0)
@@ -44,7 +40,7 @@ class RectangleTests extends Specification {
 		val y2 = 3
 
 		"When building a rectangle" in {
-			var results = service.Rectangle(x, y, x2, y2)
+			var results = service.Rectangle (x, y, x2, y2)
 
 			"Return correct number of points" in {
 				results must have size (4)
@@ -55,10 +51,10 @@ class RectangleTests extends Specification {
 			}
 
 			"Return all points" in {
-				results must contain((x, y))
-				results must contain((x, y2))
-				results must contain((x2, y))
-				results must contain((x2, y2))
+				results must contain ((x, y))
+				results must contain ((x, y2))
+				results must contain ((x2, y))
+				results must contain ((x2, y2))
 			}
 		}
 	}

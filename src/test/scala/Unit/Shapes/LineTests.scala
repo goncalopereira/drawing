@@ -4,9 +4,7 @@ import org.specs2.mutable.Specification
 import Shapes.ShapeFactory
 
 class LineTests extends Specification {
-
 	val service = new ShapeFactory
-
 	"Two points not on same line" should {
 		val x = 1
 		val y = 2
@@ -14,7 +12,7 @@ class LineTests extends Specification {
 		val y2 = 3
 
 		"When building a line" in {
-			var results = service.Line(x, y, x2, y2)
+			var results = service.Line (x, y, x2, y2)
 
 			"Return no results" in {
 				results must have size (0)
@@ -28,17 +26,17 @@ class LineTests extends Specification {
 		val y2 = 6
 
 		"When building a line" in {
-			var results = service.Line(x, y, x, y2)
+			var results = service.Line (x, y, x, y2)
 
 			"Return correct number of points in line" in {
 				results must have size (4)
 			}
 
 			"Return points from first to second" in {
-				results must contain((x, 3))
-				results must contain((x, 4))
-				results must contain((x, 5))
-				results must contain((x, 6))
+				results must contain ((x, 3))
+				results must contain ((x, 4))
+				results must contain ((x, 5))
+				results must contain ((x, 6))
 			}
 		}
 	}
@@ -49,19 +47,18 @@ class LineTests extends Specification {
 		val y = 3
 
 		"When building a line" in {
-			var results = service.Line(x, y, x2, y)
+			var results = service.Line (x, y, x2, y)
 
 			"Return correct number of points in line" in {
 				results must have size (4)
 			}
 
 			"Return points from first to second" in {
-				results must contain((1, y))
-				results must contain((2, y))
-				results must contain((3, y))
-				results must contain((4, y))
+				results must contain ((1, y))
+				results must contain ((2, y))
+				results must contain ((3, y))
+				results must contain ((4, y))
 			}
 		}
 	}
-
 }

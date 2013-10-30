@@ -15,47 +15,38 @@ Flood-fill (node, target-color, replacement-color):
  4. Return.
  */
 class BucketFillFactory {
-
 	def apply(x: Int, y: Int, canvas: Canvas): Seq[(Int, Int)] = {
+		var next: List[(Int, Int)] = List ((x, y))
 
-		var next: List[(Int, Int)] = List((x, y))
-
-		val targetColour = canvas(x, y)
+		val targetColour = canvas (x, y)
 
 		var toColour = List[(Int, Int)]()
 
 		do {
-
 			val point = next.head
 			next = next.tail
 
-			val results = Step(point, targetColour, canvas, next, toColour)
+			val results = Step (point, targetColour, canvas, next, toColour)
 
 			if (results.nonEmpty) {
 				toColour = toColour :+ point
 
 				next = next ++ results.get
 			}
-
 		} while (next.nonEmpty)
 
 		toColour
 	}
 
 	def Step(point: (Int, Int), targetColour: Option[Char], canvas: Canvas, next: Seq[(Int, Int)], toColour: Seq[(Int, Int)]): Option[Seq[(Int, Int)]] = {
+		if (canvas.IsInternalPosition (point._1, point._2)
+			&& canvas (point._1, point._2) == targetColour) {
+			val sides = List ((point._1 - 1, point._2), (point._1 + 1, point._2), (point._1, point._2 + 1), (point._1, point._2 - 1))
 
-		if (canvas.IsInternalPosition(point._1, point._2)
-			&& canvas(point._1, point._2) == targetColour) {
-
-			val sides = List((point._1 - 1, point._2), (point._1 + 1, point._2), (point._1, point._2 + 1), (point._1, point._2 - 1))
-
-			Some(sides
-				.filterNot(p => toColour.contains(p))
-				.filterNot(p => next.contains(p)))
+			Some (sides.filterNot (p => toColour.contains (p)).filterNot (p => next.contains (p)))
 		} else {
 			None
 		}
 	}
-
 }
 

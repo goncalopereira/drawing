@@ -16,19 +16,18 @@ abstract class Parser {
 	def TryParse(ss: Array[String]): Either[Boolean, ParseArguments]
 
 	def Execute(ss: Array[String], canvas: Option[Canvas]): Either[String, Command] = {
+		if (IsInvalidCanvas (canvas))
+			return Left (ParserService.RequireCanvas)
 
-		if (IsInvalidCanvas(canvas))
-			return Left(ParserService.RequireCanvas)
+		if (IsIncorrectNumberOfArguments (ss.length))
+			return Left (ParserService.WrongNumberOfArguments)
 
-		if (IsIncorrectNumberOfArguments(ss.length))
-			return Left(ParserService.WrongNumberOfArguments)
-
-		val parsing: Either[Boolean, ParseArguments] = TryParse(ss)
+		val parsing: Either[Boolean, ParseArguments] = TryParse (ss)
 
 		if (parsing.isLeft)
-			return Left(ParserService.ParsingError)
+			return Left (ParserService.ParsingError)
 
-		Right(CreateCommand(parsing.right.get, canvas))
+		Right (CreateCommand (parsing.right.get, canvas))
 	}
 
 	def CanUse(ss: Array[String]): Boolean
@@ -45,17 +44,16 @@ trait CanvasNotRequired {
 trait OnlyIntArguments {
 	def TryParse(ss: Array[String]): Either[Boolean, ParseArguments] = {
 		try {
-			val i = ss.map(_.toInt)
-			Right(new ParseArguments(i, None))
-		}
-		catch {
-			case _ => return Left(false)
+			val i = ss.map (_.toInt)
+			Right (new ParseArguments (i, None))
+		} catch {
+			case _ => return Left (false)
 		}
 	}
 }
 
 trait NoArguments {
-	def TryParse(ss: Array[String]) = Right(ParseArguments(Array(), None))
+	def TryParse(ss: Array[String]) = Right (ParseArguments (Array (), None))
 
 	def IsIncorrectNumberOfArguments(i: Int): Boolean = false
 }
