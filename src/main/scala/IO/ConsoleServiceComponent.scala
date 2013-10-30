@@ -4,13 +4,8 @@ trait ConsoleComponent {
 	val console: Console
 
 	class Console {
-		def Print(s: String) {
-			print(s)
-		}
-
-		def Read(message: String): String = {
-			Console.readLine(message)
-		}
+		def Print(s: String) = print(s)
+		def Read(message: String) =	Console.readLine(message)
 	}
 
 }
@@ -21,7 +16,6 @@ trait ConsoleServiceComponent {
 
 	class ConsoleService {
 		def Print(s: String) = console.Print(s)
-
 		def Read(message: String) = console.Read(message)
 	}
 
