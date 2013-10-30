@@ -12,6 +12,7 @@ import Drawing._
 class DrawingTests extends Specification with Mockito {
   "Using the Drawing application" should {
   
+    val error = "error message"
     val mockIO = mock[Registry.ConsoleService]
     mockIO.Read(Drawing.EnterCommand) returns "stub"
 
@@ -24,6 +25,16 @@ class DrawingTests extends Specification with Mockito {
       drawing.Run()
       "Print command not found" in {
         one(mockIO).Print(Drawing.CommandNotFound)
+      }
+  }
+  
+    "When parser service returns error" in {
+      mockParserService(any[String],any[Option[Canvas]]) returns Some(Left(error)) thenReturns Some(Right(new Quit()))
+    
+      val drawing = new Drawing(mockIO, mockParserService)
+      drawing.Run()
+      "Print error" in {
+        one(mockIO).Print(error)
       }
     }
   }
