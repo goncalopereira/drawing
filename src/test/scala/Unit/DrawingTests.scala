@@ -51,7 +51,22 @@ class DrawingTests extends Specification with Mockito {
         one(mockIO).Print("") //no canvas set up..
       } 
      }
-  }
 
+    "When finding a Create command" in {
+      val canvas = new Canvas(5,5)
+      case class mockCreate extends Command with Create[Canvas] { def Execute(): Canvas = { return new Canvas(1,1) } }
+      val create = mock[mockCreate]
+      create.Execute() returns canvas
+      mockParserService(any[String],any[Option[Canvas]]) returns Some(Right(create)) thenReturns Some(Right(new Quit()))
+      val drawing = new Drawing(mockIO, mockParserService)
+      drawing.Run()
+      "Call command execute" in {
+        val canvas2 = one(create).Execute()
+      }
+      "Print new canvas" in {
+        one(mockIO).Print(canvas.toString()) 
+      } 
+     }
+  }
 }
 
