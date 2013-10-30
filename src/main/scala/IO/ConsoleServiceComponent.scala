@@ -12,6 +12,7 @@ trait ConsoleComponent {
 			Console.readLine(message)
 		}
 	}
+
 }
 
 trait ConsoleServiceComponent {
@@ -20,6 +21,8 @@ trait ConsoleServiceComponent {
 
 	class ConsoleService {
 		def Print(s: String) = console.Print(s)
+
 		def Read(message: String) = console.Read(message)
 	}
+
 }

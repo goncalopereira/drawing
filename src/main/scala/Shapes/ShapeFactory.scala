@@ -15,8 +15,6 @@ object ShapeFactory {
 	}
 
 	def Rectangle(x: Int, y: Int, x2: Int, y2: Int): Seq[(Int, Int)] = {
-
-
 		if (x == x2 || y == y2)
 			return Seq[(Int, Int)]()
 
