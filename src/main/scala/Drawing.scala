@@ -2,16 +2,17 @@ package Drawing
 
 import Canvas.Canvas
 import Commands._
-import IO.{Output, IO}
+import IO.Output
 import Parse.InputParser
 import scala.util.control.Breaks
+import Registry.Registry
 
-class Drawing(io: IO, parser: InputParser) {
+class Drawing(io: Registry.ConsoleService = Registry.consoleService, parser: InputParser = Registry.parserService) {
 
 	private val EnterCommand = Output.NewLine + "enter command: "
 	private val CommandNotFound = "Command not found"
 
-	def apply() {
+	def Run() {
 		var command: Option[Either[String, Command]] = None
 		var canvas: Option[Canvas] = None
 

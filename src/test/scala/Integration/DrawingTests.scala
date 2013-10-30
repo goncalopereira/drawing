@@ -1,10 +1,9 @@
 package test.scala.Integration
 
 import Drawing.Drawing
-import IO.IO
 import org.specs2.mutable.Specification
 import org.specs2.mock.Mockito
-import Parse.InputParserFactory
+import Registry.Registry
 
 class DrawingTests extends Specification with Mockito {
 
@@ -16,7 +15,7 @@ class DrawingTests extends Specification with Mockito {
 			val screen4 = "----------------------\n|               xxxxx|\n|xxxxxx         x   x|\n|     x         xxxxx|\n|     x              |\n----------------------\n"
 			val screen5 = "----------------------\n|oooooooooooooooxxxxx|\n|xxxxxxooooooooox   x|\n|     xoooooooooxxxxx|\n|     xoooooooooooooo|\n----------------------\n"
 
-			val mockedIO = mock[IO]
+			val mockedIO = mock[Registry.ConsoleService]
 
 			mockedIO.Read(any[String])
 				.returns("C 20 4")
@@ -26,7 +25,7 @@ class DrawingTests extends Specification with Mockito {
 				.thenReturns("B 10 3 o")
 				.thenReturns("Q")
 
-			new Drawing(mockedIO,InputParserFactory.New)()
+			new Drawing(io = mockedIO,parser = Registry.parserService).Run()
 
 			one(mockedIO).Print(screen1)
 			one(mockedIO).Print(screen2)

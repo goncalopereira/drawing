@@ -25,7 +25,7 @@ class BucketFillFactoryTests extends Specification {
 
 		"When doing a step to a point to be coloured which has a side already to on TODO" in {
 
-			val results = BucketFillFactory.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0),(2,0)))
+			val results = BucketFillFactory.Step((2, 1), targetColour, canvas, List((1, 1)), List((1, 2), (1, 0), (2, 0)))
 
 			"Return list with all sides except that" in {
 				results must beSome(List((3, 1), (2, 2)))
