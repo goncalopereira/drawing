@@ -13,15 +13,15 @@ class DrawingTests extends Specification with Mockito {
   "Using the Drawing application" should {
   
     val mockIO = mock[Registry.ConsoleService]
+    mockIO.Read(Drawing.EnterCommand) returns "stub"
+
     val mockParserService = mock[ParserService]
 
-    val drawing = new Drawing(mockIO, mockParserService)
-    
-    mockIO.Read(Drawing.EnterCommand) returns ""    
-
     "When command not found" in {
-      mockParserService(any[String],any[Option[Canvas]]) returns None
+      mockParserService(any[String],any[Option[Canvas]]) returns None thenReturns Some(Right(new Quit()))
     
+      val drawing = new Drawing(mockIO, mockParserService)
+      drawing.Run()
       "Print command not found" in {
         one(mockIO).Print(Drawing.CommandNotFound)
       }
