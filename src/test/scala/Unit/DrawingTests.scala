@@ -17,7 +17,7 @@ class DrawingTests extends Specification with Mockito {
     mockIO.Read(Drawing.EnterCommand) returns "stub"
 
     val mockParserService = mock[ParserService]
-
+ 
     "When command not found" in {
       mockParserService(any[String],any[Option[Canvas]]) returns None thenReturns Some(Right(new Quit()))
     
@@ -37,6 +37,21 @@ class DrawingTests extends Specification with Mockito {
         one(mockIO).Print(error)
       }
     }
+    
+    "When finding a Update command" in {
+      case class mockUpdate extends Command with Update[Canvas] { def Execute() {} }
+      val update = mock[mockUpdate]
+      mockParserService(any[String],any[Option[Canvas]]) returns Some(Right(update)) thenReturns Some(Right(new Quit()))
+      val drawing = new Drawing(mockIO, mockParserService)
+      drawing.Run()
+      "Call command execute" in {
+        one(update).Execute()
+      }
+      "Print" in {
+        one(mockIO).Print("") //no canvas set up..
+      } 
+     }
   }
+
 }
 

@@ -34,11 +34,11 @@ class Drawing(io: Registry.ConsoleService = Registry.consoleService,
 					case Some(Right(_: Quit)) => loop.break()
 					case Some(Right(c: Create[Canvas])) => {
 						canvas = Some(c.Execute())
-						io.Print(canvas.get.toString())
+						io.Print(canvas.getOrElse("").toString())
 					}
 					case Some(Right(c: Update[Canvas])) => {
 						c.Execute()
-						io.Print(canvas.get.toString())
+						io.Print(canvas.getOrElse("").toString())
 					}
 				}
 			} while (true)
