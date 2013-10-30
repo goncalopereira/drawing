@@ -9,16 +9,16 @@ class CanvasTests extends Specification {
 		val height = 7
 
 		"When building a Canvas" in {
-			val canvas = new Canvas (width, height)
+			val canvas = new Canvas(width, height)
 
 			"Have correct width" in {
-				canvas (0) must have size (width + 2)
+				canvas(0) must have size (width + 2)
 			}
 			"Have correct height" in {
 				canvas must have size (height + 2)
 			}
 			"Have empty points" in {
-				canvas (1, 1) mustEqual None
+				canvas(1, 1) mustEqual None
 			}
 			"Print correctly" in {
 				canvas.toString mustEqual "----------\n|        |\n|        |\n|        |\n|        |\n|        |\n|        |\n|        |\n----------\n"
@@ -27,24 +27,24 @@ class CanvasTests extends Specification {
 
 		"When updating a Canvas" in {
 			"Update correctly in matrix" in {
-				val updateCanvas = new Canvas (width, height)
-				updateCanvas (1, 1) = 'x'
-				updateCanvas (1, 1) mustEqual Some ('x')
+				val updateCanvas = new Canvas(width, height)
+				updateCanvas(1, 1) = 'x'
+				updateCanvas(1, 1) mustEqual Some('x')
 			}
 			"Not allow to update borders" in {
-				val updateCanvas = new Canvas (width, height)
-				updateCanvas (0, 0) = 'x'
-				updateCanvas (0, 0) mustEqual Some ('-')
-				updateCanvas (width, height) = 'x'
-				updateCanvas (width + 1, height + 1) mustEqual Some ('-')
+				val updateCanvas = new Canvas(width, height)
+				updateCanvas(0, 0) = 'x'
+				updateCanvas(0, 0) mustEqual Some('-')
+				updateCanvas(width, height) = 'x'
+				updateCanvas(width + 1, height + 1) mustEqual Some('-')
 			}
 
 			"Be able to re-update" in {
-				val updateCanvas = new Canvas (width, height)
-				updateCanvas (1, 1) = 'x'
-				updateCanvas (1, 1) mustEqual Some ('x')
-				updateCanvas (1, 1) = 'c'
-				updateCanvas (1, 1) mustEqual Some ('c')
+				val updateCanvas = new Canvas(width, height)
+				updateCanvas(1, 1) = 'x'
+				updateCanvas(1, 1) mustEqual Some('x')
+				updateCanvas(1, 1) = 'c'
+				updateCanvas(1, 1) mustEqual Some('c')
 			}
 		}
 	}

@@ -12,8 +12,8 @@ object ParserService {
 
 class ParserService(availableParsers: List[Parser]) {
 	def apply(input: String, canvas: Option[Canvas]): Option[Either[String, Command]] = {
-		val args = input.split (ParserService.Separator)
+		val args = input.split(ParserService.Separator)
 
-		availableParsers.filter (p => p.CanUse (args)).map (p => p.Execute (args.tail, canvas)).headOption
+		availableParsers.filter(p => p.CanUse(args)).map(p => p.Execute(args.tail, canvas)).headOption
 	}
 }

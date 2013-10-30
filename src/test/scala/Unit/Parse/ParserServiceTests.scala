@@ -8,12 +8,12 @@ import org.specs2.mock.Mockito
 
 class ParserServiceTests extends Specification with Mockito {
 	"Given no parsers" should {
-		val parser = new ParserService (List[Parser]())
+		val parser = new ParserService(List[Parser]())
 		val unknown = "X 1 2 3"
-		val canvas = new Canvas (5, 5)
+		val canvas = new Canvas(5, 5)
 
 		"When string parsed" in {
-			val results = parser (unknown, Some (canvas))
+			val results = parser(unknown, Some(canvas))
 
 			"Return none" in {
 				results must beNone
@@ -28,12 +28,12 @@ class ParserServiceTests extends Specification with Mockito {
 				val command = mock[Command]
 
 				p = mock[Parser]
-				p.CanUse (any[Array[String]]) returns true
+				p.CanUse(any[Array[String]]) returns true
 
-				p.Execute (any[Array[String]], any[Option[Canvas]]) returns Right (command)
+				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Right(command)
 
-				val parser = new ParserService (List (p))
-				val results = parser ("", None)
+				val parser = new ParserService(List(p))
+				val results = parser("", None)
 
 				results must beSome[Either[String, Command]]
 				results.get.isRight mustEqual true
@@ -46,11 +46,11 @@ class ParserServiceTests extends Specification with Mockito {
 				var p = mock[Parser]
 
 				p = mock[Parser]
-				p.CanUse (any[Array[String]]) returns true
-				p.Execute (any[Array[String]], any[Option[Canvas]]) returns Left ("error")
+				p.CanUse(any[Array[String]]) returns true
+				p.Execute(any[Array[String]], any[Option[Canvas]]) returns Left("error")
 
-				val parser = new ParserService (List (p))
-				val results = parser ("", None)
+				val parser = new ParserService(List(p))
+				val results = parser("", None)
 
 				results must beSome[Either[String, Command]]
 				results.get.isLeft mustEqual true
@@ -60,11 +60,11 @@ class ParserServiceTests extends Specification with Mockito {
 		"When sent wrong valid command" in {
 			var p = mock[Parser]
 			p = mock[Parser]
-			p.CanUse (any[Array[String]]) returns false
+			p.CanUse(any[Array[String]]) returns false
 
 			"Return none" in {
-				val parser = new ParserService (List (p))
-				val results = parser ("", None)
+				val parser = new ParserService(List(p))
+				val results = parser("", None)
 
 				results must beNone
 			}
