@@ -7,7 +7,8 @@ import Parse.ParserService
 import scala.util.control.Breaks
 import Registry.Registry
 
-class Drawing(io: Registry.ConsoleService = Registry.consoleService, parserService: ParserService = Registry.parserService) {
+class Drawing(io: Registry.ConsoleService = Registry.consoleService,
+              parserService: ParserService = Registry.parserService) {
 
 	private val EnterCommand = Output.NewLine + "enter command: "
 	private val CommandNotFound = "Command not found"
