@@ -4,7 +4,6 @@
     <facet type="scala" name="Scala">
       <configuration>
         <option name="compilerLibraryLevel" value="Project" />
-        <option name="compilerLibraryName" value="scala-compiler" />
       </configuration>
     </facet>
   </component>
@@ -15,8 +14,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="scala-library" level="project" />
-    <orderEntry type="library" name="mockito-all-1.9.5" level="project" />
+    <orderEntry type="library" name="lib_managed" level="project" />
   </component>
 </module>
 
